@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
+const routes = require('./router.js')
 
 app.use(express.json());
 app.use(cors());
+
+app.use(routes);
 
 mongoose.connect("mongodb://localhost:27017/zooland")
         .then(() =>console.log('DB connected'))
