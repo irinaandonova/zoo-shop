@@ -4,7 +4,7 @@ const register = async (userInfo) => {
     try {
         const user = new User(userInfo);
         await user.save();
-        return user;
+        return {user, status: 'ok'};
     }
     catch (err) {
         console.log(`Registration failure!`, err);
