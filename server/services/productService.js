@@ -1,7 +1,14 @@
 const Product = require("../models/Product.js")
 
 const getAll = async() => {
-    return await Product.find({}).lean();
+    try{
+    let result  = await Product.find({}).lean();
+        return result;
+    }
+    catch(err) {
+        console.log(err);
+        return {status: 'error'}
+    }
 }
 
 const getOne = async(id) => {
@@ -10,7 +17,7 @@ const getOne = async(id) => {
     return product;
 }
 
-const getByAnimal = async (animal) => {
+const getByType = async (animal) => {
     const allProducts = await getAll();  
     const products = [];
     allProducts.forEach(x=> {
@@ -23,6 +30,8 @@ const getByAnimal = async (animal) => {
 }
 const productService = {
     getAll,
-    getByAnimal,
+    getByType,
     getOne
 }
+
+module.exports = productService;
