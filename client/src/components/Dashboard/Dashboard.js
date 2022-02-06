@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import productService from "../../services/productsService.js";
-import Product from "../ProductCard/ProductCard.js";
+import Product from "../Product/Product.js";
 
 const Dashboard = () => {
     const [products, setProducts] = useState([]);
