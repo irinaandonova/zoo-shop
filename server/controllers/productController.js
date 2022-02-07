@@ -21,7 +21,7 @@ router.get('/details/:_id', async (req, res) => {
 
 router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
-    const animals = [dog, cat, roden, other];
+    const animals = ['dog', 'cat', 'roden', 'other'];
 
     if(!animals.incules(animal)) {
         res.status(404);
