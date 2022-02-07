@@ -1,0 +1,43 @@
+.all-products {
+    display: flex;
+    list-style: none;
+    text-align: left;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    margin-top: 15px;
+    border: 2px solid black;
+    width: 130px;
+    background-color: white;
+    height: 210px;
+    text-align: center;
+    font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.product p {
+    margin: 5px;
+    font-size: 12px;
+}
+
+.products {
+    width: 90%;
+    
+}
+
+.button {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: red;
+    font-size: 14px;
+    max-height: 32px;
+}
+
+.img img{
+    width: 70px;
+}
