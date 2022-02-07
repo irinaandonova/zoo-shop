@@ -38,6 +38,7 @@ const getByType = async(animal) => {
         return {status: 'err'};
     }
 }
+
 const productService = {
     getAll,
     getByType,

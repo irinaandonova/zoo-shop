@@ -1,0 +1,38 @@
+.auth-form {
+    border: 2px solid black;
+    margin: 20px 70px;
+    background-color: white;
+    width: 60%;
+    
+}
+form{
+    display: block;
+	width: 100%;
+	border: none;
+	padding: 0.4rem;
+    
+}
+input, label {
+    display: flex;
+	position: relative;
+	align-items: center;
+	border: 1px solid;
+}
+.form-input li{
+    list-style: none;
+    width: 62%;
+}
+.sign-up-link {
+    font-size: 15px;
+}
+.no-profile, .have-profile {
+    margin: 0 10px;
+}
+.sign-up-link a {
+    color: #083cb5d4;
+    font-weight: 600;
+}
+
+.sign-up-form li{
+    margin: 1px 0;
+}
