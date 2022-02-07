@@ -16,10 +16,10 @@ const Header = () => {
             </article>
             <nav className="navbar">
                 <ul className="nav-list">
-                    <li><Link to="/dogs">Кучета</Link></li>
-                    <li><Link to="/cats">Котки</Link></li>
-                    <li><Link to="/rodens">Гризачи</Link></li>
-                    <li><Link to="/others">Други</Link></li>
+                    <li><Link to="/dog">Кучета</Link></li>
+                    <li><Link to="/cat">Котки</Link></li>
+                    <li><Link to="/roden">Гризачи</Link></li>
+                    <li><Link to="/other">Други</Link></li>
                     <li><Link to="/cart"></Link></li>                   
                 </ul>
             </nav>
