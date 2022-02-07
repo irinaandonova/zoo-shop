@@ -1,32 +1,42 @@
 const Product = require("../models/Product.js")
 
-const getAll = async() => {
-    try{
-    let result  = await Product.find({}).lean();
-        return result;
+const getAll = async () => {
+    try {
+        let result = await Product.find({}).lean();
+        res.status(201).json({ result });
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
-        return {status: 'error'}
+        res.status(501).json('Connot fetch data!');
     }
 }
 
-const getOne = async(id) => {
-    let product =  await Product.findById(id).lean();
-    
-    return product;
+const getOne = async (id) => {
+    try {
+        let product = await Product.findById(id).lean();
+        res.status(201).json({ product })
+
+    }
+    catch (err) {
+        console.log(err);
+        res.status(501).json('Connot fetch data!');
+    }
 }
 
 const getByType = async (animal) => {
-    const allProducts = await getAll();  
-    const products = [];
-    allProducts.forEach(x=> {
-        if(x.animal === animal) {
-            products.push(x);
-        }
-    })
-    return products;  
-   
+    try {
+        const allProducts = await getAll();
+        const products = [];
+        allProducts.forEach(x => {
+            if (x.animal === animal) {
+                products.push(x);
+            }
+        })
+    }
+    catch (err) {
+        console.log(err);
+        res.status(501).json('Connot fetch data!');
+    }
 }
 const productService = {
     getAll,
