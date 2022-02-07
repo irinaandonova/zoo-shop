@@ -1,6 +1,16 @@
 const router = require('express').Router();
 const productService = require('../services/productService.js');
 
+router.get('', async (req, res) => {
+    try {
+        let products = await productService.getAll();
+        res.status(201).json(products)
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(501);
+    }
+})
 router.get('/details/:_id', async (req, res) => {
     const id = req.params._id;
 
@@ -9,39 +19,25 @@ router.get('/details/:_id', async (req, res) => {
     res.json(result)
 });
 
-router.get('/products/cats', async (req, res) => {
-    const animal = 'cat';
-    let products = await productService.getByAnimal(animal);
-    console.log(products)
-    let result = JSON.stringify(products);
-    res.json(result);
+router.get('/:animal', async (req, res) => {
+    const animal = req.params.animal;
+    const animals = [dog, cat, roden, other];
+    if(!animals.incules(animal)) {
+        res.status(404);
+        return;
+    }
+    try {
+        let products = await productService.getByType(animal);
+        res.status(201).json(products);
+    }
+    catch (err) {
+        console.log(err);
+        return { status: 'error' }
+    }
+
 
 })
 
-router.get('/products/dogs', async (req, res) => {
-    const animal = 'dog';
-    let products = await productService.getByAnimal(animal);
-    let result = JSON.stringify(products);
-    res.json(result);
 
-})
-
-router.get('/products/rodens', async (req, res) => {
-    const animal = 'rodens';
-    let products = await productService.getByAnimal(animal);
-
-    let result = JSON.stringify(products);
-    res.json(result);
-
-})
-
-router.get('/products/others', async (req, res) => {
-    const animal = 'other';
-    let products = await productService.getByAnimal(animal);
-    console.log(products)
-    let result = JSON.stringify(products);
-    res.json(result);
-
-});
 
 module.exports = router;
