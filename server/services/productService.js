@@ -3,27 +3,26 @@ const Product = require("../models/Product.js")
 const getAll = async () => {
     try {
         let result = await Product.find({}).lean();
-        res.status(201).json({ result });
+        return  result;
     }
     catch (err) {
         console.log(err);
-        res.status(501).json('Connot fetch data!');
+        return {status: 'err'};
     }
 }
 
 const getOne = async (id) => {
     try {
         let product = await Product.findById(id).lean();
-        res.status(201).json({ product })
-
+        return  product;
     }
     catch (err) {
         console.log(err);
-        res.status(501).json('Connot fetch data!');
+        return {status: 'err'};
     }
 }
 
-const getByType = async (animal) => {
+const getByType = async(animal) => {
     try {
         const allProducts = await getAll();
         const products = [];
@@ -32,10 +31,11 @@ const getByType = async (animal) => {
                 products.push(x);
             }
         })
+        return products;
     }
     catch (err) {
         console.log(err);
-        res.status(501).json('Connot fetch data!');
+        return {status: 'err'};
     }
 }
 const productService = {

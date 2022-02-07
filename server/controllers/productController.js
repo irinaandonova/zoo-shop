@@ -23,7 +23,7 @@ router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
     const animals = ['dog', 'cat', 'roden', 'other'];
 
-    if(!animals.incules(animal)) {
+    if(!animals.includes(animal)) {
         res.status(404);
         return;
     }
