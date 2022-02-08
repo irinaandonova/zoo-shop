@@ -7,15 +7,14 @@ const Dashboard = () => {
     const [products, setProducts] = useState([]);
     const location = useLocation();
     
-    const path = location.pathname.split('/')[1];
-    console.log(path);
+    const animal = location.pathname.split('/')[1];
 
     useEffect(() => {
-        productService.getProducts(path)
+        productService.getProducts(animal)
             .then(res => res.json())
             .then(result => setProducts(result))
             .catch(err => console.log(err))
-    }, [path]);
+    }, [animal]);
 
     return (
         <section className="home-page">
@@ -24,7 +23,7 @@ const Dashboard = () => {
                     {products.length > 0 ? 
                     products.map(x => <Product product={x} key={x._id} />)
                     :
-                    <li>There is no <span>{path} </span>items at the moment</li>}
+                    <li>There is no <span>{animal} </span>items at the moment</li>}
                 </ul>
             </article>
         </section>
