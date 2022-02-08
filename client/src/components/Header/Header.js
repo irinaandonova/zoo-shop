@@ -10,8 +10,8 @@ const Header = () => {
             <input type="button" value="Изход" className="profile logout"/>
             </article>
             <article className="guest-header-article">
-            <Link to="/login" className="profile">Вход</Link>
-            <Link to="/register" className="profile">Регистация</Link>
+            <Link to="/auth/login" className="profile">Вход</Link>
+            <Link to="/auth/register" className="profile">Регистация</Link>
             </article>
             </article>
             <nav className="navbar">
