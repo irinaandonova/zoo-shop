@@ -4,8 +4,14 @@ import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Header from './components/Header/Header.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
-
+import { useContext, useState } from 'react';
+import AuthContext from './context/AuthContext.js';
 function App() {
+  const initialValue = { firstName: '', email: '', _id: '' }
+  const [user, setUser] = useState(initialValue);
+
+  
+
   return (
     <div className="App">
       <Header />
