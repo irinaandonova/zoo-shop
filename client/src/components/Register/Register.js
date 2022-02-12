@@ -1,9 +1,44 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext.js';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { register, login } = useContext(AuthContext);
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
+        const town = formData.get('town');
+        const address = formData.get('address');
+        const email = formData.get('email');
+        const phoneNumber = formData.get('phoneNumber');
+        const password = formData.get('password');
+        const rePassword = formData.get('repeat');
+
+
+        console.log(`Register ${email}`)
+        if (!firstName || !lastName || !email || !phoneNumber || !address || !town || !password || !rePassword) {
+            throw new Error(`All fieleds must be filled!`);
+        }
+
+        else if (password !== rePassword) {
+            throw new Error('Password mismatch!');
+        }
+
+        let userInfo = await register({
+            firstName, lastName, email, phoneNumber, address, town, password
+        });
+        if (userInfo === 'ok') {
+            login({ email, password });
+        }
+
+    }
     return (
         <section className="auth-form">
-            <form className="sign-up-form">
+            <form className="sign-up-form" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
                         <label htmlFor="first-name">Име:</label>
