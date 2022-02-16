@@ -8,9 +8,7 @@ export const AuthContextProvider = ({ children }) => {
     const login = async ({ email, password }) => {
         try {
             const response = await authService.login({ email, password });
-            console.log(`${response} response`)
-            const { firstName, _id, token } = response;
-            const user = { firstName, _id }
+            const { token, user } = response;
             localStorage.setItem('user', user);
             localStorage.setItem('token', token);
             setUserInfo(user);
