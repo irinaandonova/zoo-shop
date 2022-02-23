@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../context/AuthContext.js"
+import AuthContext from "../../context/AuthContext.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     const { userInfo, logout } = useContext(AuthContext);
-    console.log(userInfo);
-
     return (
         <header id="site-header">
             <article className="upper-header">
@@ -28,7 +28,7 @@ const Header = () => {
                     <li><Link to="/cat">Котки</Link></li>
                     <li><Link to="/roden">Гризачи</Link></li>
                     <li><Link to="/other">Други</Link></li>
-                    <li><Link to="/cart"></Link></li>
+                    <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart}/></Link></li>
                 </ul>
             </nav>
         </header>
