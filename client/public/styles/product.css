@@ -5,7 +5,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
+.product-details {
+    width: 75%;
+    align-self: center;
+    background-color: white;
+}
 .product {
     margin-top: 15px;
     border: 2px solid black;
