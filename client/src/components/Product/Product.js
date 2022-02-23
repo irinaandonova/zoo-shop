@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 const Product = ( {product} ) => {
-    console.log(product)
     return (
         <li className="product">
             <p>Продукт: {product.productName}</p>

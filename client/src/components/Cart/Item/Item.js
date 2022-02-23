@@ -6,12 +6,10 @@ import { changeQuantity } from "../../../features/cartSlice.js";
 const Item = ({ item }) => {
     const plus = <FontAwesomeIcon icon={faPlus} />;
     const minus = <FontAwesomeIcon icon={faMinus} />;
-    console.log(item);
     
     const dispatch = useDispatch();
 
     const [newQuantity, setNewQuantity] = useState(item.quantity);
-    console.log(newQuantity);
     
     const quantityHander = (type) => {
         if (type === "decrease") {
