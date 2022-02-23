@@ -8,6 +8,7 @@ import { AuthContextProvider } from './context/AuthContext.js';
 import MyProfile from './components/MyProfile/MyProfile.js';
 import EditProfile from './components/Edit Profile/EditProfile.js';
 import Details from './components/Details/Details.js';
+import Cart from './components/Cart/Cart.js';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/profile' element={<MyProfile />}/>
           <Route path="/profile/:userId/edit" element={<EditProfile />}/>
           <Route path='/details/:productId' element={<Details />}/>
+          <Route path='/cart' element={<Cart/>}/>
         </Routes>
       </AuthContextProvider>
 
