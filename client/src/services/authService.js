@@ -28,10 +28,14 @@ const login = async ({ email, password }) => {
     let result = await response.json();
     return result;
 }
-const editProfile = (_id) => {
-    let response = fetch(`${baseUrl}/${_id}`)
-        .then(res => res.json())
-        .catch(err => console.log(err));
+const editProfile = async({_id, user}) => {
+    let response = fetch(`${baseUrl}/${_id}`, {
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        method: 'POST', 
+        body: JSON.stringify({user})
+    })
 
     return response;
 }
