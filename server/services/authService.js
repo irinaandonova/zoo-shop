@@ -20,7 +20,7 @@ const register = async ({ email, firstName, lastName, phoneNumber, town, address
 const login = async ({ email, password }) => {
     try {
         const user = await User.findOne({ email });
-
+        
         if (user.password === password) {
 
             const token = jwt.sign(
@@ -31,7 +31,7 @@ const login = async ({ email, password }) => {
                 },
                 SECRET
             )
-            return { status: 'ok', token, firstName: user.firstName, _id: user._id.toString() }
+            return { status: 'ok', token, user }
         }
         else {
             return { status: 'err', token: false };
@@ -43,9 +43,15 @@ const login = async ({ email, password }) => {
     }
 
 }
+
+const editProfile = (_id, user) => {
+    console.log( user, _id)
+    return User.updateOne({_id}, {town: user.town, address: user.address, phoneNumber: user.phoneNumber});
+} 
 const authService = {
     register,
-    login
+    login,
+    editProfile
 }
 
 module.exports = authService;
