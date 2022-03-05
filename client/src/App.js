@@ -28,7 +28,7 @@ function App() {
           <Route path='/roden' element={<Dashboard />} />
           <Route path='/other' element={<Dashboard />} />
           <Route path='/profile' element={<MyProfile />}/>
-          <Route path="/profile/:userId/edit" element={<EditProfile />}/>
+          <Route path="/profile/:_id/edit" element={<EditProfile />}/>
           <Route path='/details/:productId' element={<Details />}/>
           <Route path='/cart' element={<Cart/>}/>
         </Routes>
