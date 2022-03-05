@@ -9,24 +9,26 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    
+
     rating: {
         type: Number,
-        required:true,
+        required: true,
         default: 3
     },
     description: {
         type: String,
-    
+
     },
     comments: {
-        type: Array
+        type: Array,
+        default: [],
+        minimize: false
     },
     popularity: {
-        type:Number,
+        type: Number,
         default: 0
     }
-    
+
 });
 
 const Product = mongoose.model('Product', productSchema);
