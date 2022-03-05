@@ -22,17 +22,18 @@ router.get('/details/:_id', async (req, res) => {
 router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
     const animals = ['dog', 'cat', 'roden', 'other'];
-
+    console.log('here')
     if(!animals.includes(animal)) {
         res.status(404);
         return;
     }
     try {
         let products = await productService.getByType(animal);
+        console.log(products)
         res.status(201).json(products);
     }
     catch (err) {
-        console.log(err);
+        console.log('g');
         return { status: 'error' }
     }
 })
