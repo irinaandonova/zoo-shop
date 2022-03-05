@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const User = require('../models/User.js');
 const authService = require('../services/authService.js');
 
 router.post('/register', async (req, res) => {
@@ -21,11 +22,28 @@ router.post('/login', async (req, res) => {
     try {
         const result = await authService.login({ email, password });
         console.log(result)
-        res.json({ status: result.status, firstName: result.firstName, _id: result._id, token: result.token });
+        res.json({ status: result.status, user: result.user, token: result.token });
     }
     catch (err) {
         console.log(err);
         return { status: 'error' };
     }
 })
+
+router.post('/:_id', async(req, res) => {
+    const _id = req.params._id;
+    const user = req.body.user;
+    console.log(req.body)
+    try {
+        const result  = await authService.editProfile(_id, user);
+        console.log(result)
+        if(result) {
+            res.json({ status: 'ok'});
+        }
+    }
+    catch(err) {
+        console.log(err);
+        res.json({status: 'error'});
+    }
+}) 
 module.exports = router;
