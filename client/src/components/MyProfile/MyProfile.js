@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext.js";
-import profileService from "../../services/profileService.js";
 
 const MyProfile = () => {
    const { userInfo } = useContext(AuthContext);
-    
+    const _id = userInfo._id
     return(
         <section className="info-wrapper">
             <article className="info-article">
@@ -15,7 +14,7 @@ const MyProfile = () => {
             <label htmlFor="name">Адрес: {userInfo.address}</label>
             <label htmlFor="name">Телефонен номер: {userInfo.phoneNumber}</label>
             </article>
-            <Link to="/profile/:_id/edit" className="profile edit">Редакция на профил</Link>
+            <Link to={`/profile/${_id}/edit`} className="profile edit">Редакция на профил</Link>
         </section>
     )
 }
