@@ -1,0 +1,17 @@
+.info-wrapper {
+    border: 2px solid black;
+    margin: 20px 70px;
+    background-color: white;
+    width: 60%;
+    height: 200px;
+}
+label {
+    padding: 0 5px;
+    width: 205px
+}
+.profile-form label {
+    width: 80%;
+}
+.edit {
+    padding: 8px;
+}

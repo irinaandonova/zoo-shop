@@ -10,7 +10,7 @@ const EditProfile = () => {
     const _id = info._id;
     const navigate = useNavigate();
 
-    const changeUserInfo = async(e) => {
+    const changeUserInfo = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const town = formData.get('town');
@@ -23,9 +23,9 @@ const EditProfile = () => {
             address,
             phoneNumber
         }
-        const response = await authService.editProfile({_id, user});
+        const response = await authService.editProfile({ _id, user });
         console.log(userInfo);
-        if(response.status === '200') {
+        if (response.status === '200') {
             setInfo(user);
             navigate('/');
         }
@@ -33,22 +33,22 @@ const EditProfile = () => {
             throw new Error('Not able to edit!')
         }
     }
-    
+
     return (
         <section className="auth-form">
-            <form  className="edit-form" onSubmit={changeUserInfo}>
+            <form className="edit-form" onSubmit={changeUserInfo}>
                 <ul className="form-input">
                     <li>
                         <label htmlFor="town">Град:</label>
-                        <input type="text" className="inputFields" name="town" defaultValue={userInfo.town}/>
+                        <input type="text" className="inputFields" name="town" defaultValue={userInfo.town} />
                     </li>
                     <li>
                         <label htmlFor="address">Адрес: </label>
-                        <input type="text" className="inputFields" name="address" defaultValue={userInfo.address}/>
+                        <input type="text" className="inputFields" name="address" defaultValue={userInfo.address} />
                     </li>
                     <li>
                         <label htmlFor="phoneNumber">Телефонен номер:</label>
-                        <input type="text" className="inputFields" name="phoneNumber" defaultValue={userInfo.phoneNumber}/>
+                        <input type="text" className="inputFields" name="phoneNumber" defaultValue={userInfo.phoneNumber} />
                     </li>
                     <li id="center-btn">
                         <button type="submit">Редакция</button>
