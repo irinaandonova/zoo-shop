@@ -49,7 +49,7 @@ const Details = () => {
                             <span className="quantity">{quantity}</span>
                             <button onClick={() => quantityHander('increase')}>{plus}</button>
                         </article>
-                        <button className="button" onClick={addToCartHandler}>Купи</button>
+                        <button className="button" id='buy-btn' onClick={addToCartHandler}>Купи</button>
                         <button className="button">Добави коментар</button>
                     </article>
                 </div>
