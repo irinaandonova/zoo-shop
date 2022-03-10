@@ -3,17 +3,15 @@ const Cart = require('../models/Cart.js');
 
 const createOrder = async({order, user}) => {
     const { cartItems, totalPrice } = order;
-    console.log(order)
     const cart = new Cart({user, cartItems, totalPrice});
     console.log(cart);
-
     try {
         await cart.save();
-        return { status: 'ok'}
+        return 'ok'
     }
     catch(err) {
         console.log(err);
-        return { status: 'error'};
+        return 'error'
     }
 }
 
