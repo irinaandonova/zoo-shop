@@ -1,3 +1,13 @@
 .product-info {
     display: flex;
 }
+.product-details {
+    border: 2px solid black;
+    margin: 20px 70px;
+    width: 75%;
+    align-self: center;
+    background-color: white;
+}
+#buy-btn {
+    margin-right: 2px;
+}

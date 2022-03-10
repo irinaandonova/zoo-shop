@@ -3,15 +3,10 @@
     list-style: none;
     text-align: left;
     flex-wrap: wrap;
-    justify-content: space-between;
-}
-.product-details {
-    width: 75%;
-    align-self: center;
-    background-color: white;
 }
 .product {
     margin-top: 15px;
+    margin-right: 5px;
     border: 2px solid black;
     width: 130px;
     background-color: white;
@@ -21,27 +16,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
 .product p {
     margin: 5px;
     font-size: 12px;
 }
-
 .products {
     width: 90%;
-    
+    margin: 20px; 
 }
-
-.button {
-    border: 1px solid black;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: red;
-    font-size: 14px;
-    max-height: 32px;
-}
-
 .img img{
     width: 70px;
 }
