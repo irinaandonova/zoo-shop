@@ -24,8 +24,8 @@ const EditProfile = () => {
             phoneNumber
         }
         const response = await authService.editProfile({ _id, user });
-        console.log(userInfo);
-        if (response.status === '200') {
+        console.log(response);
+        if (response.status === 200) {
             setInfo(user);
             navigate('/');
         }
@@ -51,7 +51,7 @@ const EditProfile = () => {
                         <input type="text" className="inputFields" name="phoneNumber" defaultValue={userInfo.phoneNumber} />
                     </li>
                     <li id="center-btn">
-                        <button type="submit">Редакция</button>
+                        <button type="submit" className='profile edit'>Редакция</button>
                     </li>
                 </ul>
 
