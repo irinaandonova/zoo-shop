@@ -2,7 +2,19 @@
     display: block;
     min-height: 750px;
 }
-
 .products {
     height: 200px;
+}
+.filter-article {
+    background: white;
+    border-bottom: 2px solid;
+    width: 38%;
+    display: flex;
+}
+.filter-label {
+    border: 0;
+}
+#filter {
+    border-left: 2px solid black;
+    border-top: 1px solid black;
 }

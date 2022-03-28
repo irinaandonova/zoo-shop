@@ -11,3 +11,6 @@
 #buy-btn {
     margin-right: 2px;
 }
+.invisible {
+    display: none;
+}

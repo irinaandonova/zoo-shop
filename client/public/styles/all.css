@@ -4,7 +4,6 @@ body {
     margin: 0;
     background-image: url('https://st4.depositphotos.com/15733704/24991/v/450/depositphotos_249911356-stock-illustration-dog-paw-seamless-cat-paw.jpg');
 }
-
 .site-wrapper {
     width: 650px;
     min-height: 750px;
@@ -12,13 +11,11 @@ body {
     transform: translateX(160px);
     background-color:rgb(255, 255, 255);
 }
-
 a {
     text-decoration: none;
     color: black;
     font-family: 'Lato', sans-serif;
 }
-
 li {
     text-decoration: none;
     list-style: none;
