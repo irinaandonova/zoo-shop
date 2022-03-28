@@ -27,6 +27,9 @@ const productSchema = new mongoose.Schema({
     popularity: {
         type: Number,
         default: 0
+    },
+    subType: {
+        type: String
     }
 
 });
