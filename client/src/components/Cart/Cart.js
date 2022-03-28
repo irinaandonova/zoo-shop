@@ -6,16 +6,25 @@ import cartService from "../../services/cartService.js";
 import Item from "./Item/Item.js";
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { userInfo } = useContext(AuthContext);
-    const createOrderHandler = async () => {
-        let response = await cartService.createOrder({ order: cart, user: userInfo._id });
-        console.log(response)
-        if (response.status === 'ok') {
-            navigate('/');
+    const createOrderHandler = async (e) => {
+        e.preventDefault();
+        try {
+            let response = await cartService.createOrder({ order: cart, user: userInfo._id });
+            console.log(response)
+            if (response.status === 'ok') {
+                navigate('/');
+            }
+            else {
+                console.log(userInfo);
+                if(!userInfo._id) {
+                    navigate('/auth/login')
+                }
+            }
         }
-        else {
-            console.log(response);
+        catch(err) {
+            
             console.log('error');
         }
     }
@@ -25,17 +34,19 @@ const Cart = () => {
             <table className="cart-items-table">
                 <thead className="items-list">
                     <tr>
-                    <td>Снимка</td>
-                    <td>Име на продукта</td>
-                    <td>Kоличество</td>
-                    <td>Единична цена</td>
-                    <td>Общо</td>
+                        <td>Снимка</td>
+                        <td>Име на продукта</td>
+                        <td>Kоличество</td>
+                        <td>Единична цена</td>
+                        <td>Общо</td>
                     </tr>
                 </thead>
-                {cart.cartItems.map(x => <Item item={x} key={x._id} />)}
+                <tbody>
+                    {cart.cartItems.map(x => <Item item={x} key={x._id} />)}
+                </tbody>
             </table>
             <p className="item">Обща сума: {(cart.totalPrice).toFixed(2)}лв</p>
-            <button onClick={createOrderHandler}>Завърши поръчката</button>
+             <button className="button" onClick={createOrderHandler}>Завърши поръчката</button>
         </section>
     )
 }
