@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState =  {cartItems: [], totalPrice: 0.00 };
+const initialState =  {cartItems: [], totalPrice: 0.00, status: 'pending' };
 const cartSlice = createSlice({
     name: "cart",
     initialState,
@@ -15,20 +15,24 @@ const cartSlice = createSlice({
             }
             state.totalPrice += action.payload.price * action.payload.quantity;
         },
-        changeQuantity: (state, action) => {
+        increment: (state, action) => {
             let indexOfItem = state.cartItems.findIndex(x => x._id === action.payload._id);
-
             let item = state.cartItems[indexOfItem];
-            let difference = action.payload.newQuantity - item.quantity;
-            item.quantity = action.payload.newQuantity;
-            state.totalPrice += Number(item.price) * difference;
+            item.quantity++;
+            state.totalPrice += Number(item.price);
+        },
+        decrement: (state, action) => {
+            let indexOfItem = state.cartItems.findIndex(x => x._id === action.payload._id);
+            let item = state.cartItems[indexOfItem];
+            item.quantity--;
+            state.totalPrice -= Number(item.price);
 
             if(item.quantity === 0) {
                 state.cartItems.splice(indexOfItem, 1);
-            }
+            } 
         }
     }  
 })
 
-export const { addToCart, changeQuantity } = cartSlice.actions;
+export const { addToCart, increment, decrement } = cartSlice.actions;
 export default cartSlice.reducer;
