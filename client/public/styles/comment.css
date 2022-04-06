@@ -1,0 +1,8 @@
+.add-comment-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment-btn {
+    margin: 10px;
+}
