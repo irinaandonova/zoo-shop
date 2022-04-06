@@ -7,11 +7,12 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 import * as productService from "../../services/productsService.js";
 import { addToCart } from '../../features/cartSlice.js';
+import AddComment from '../Comment/AddComment.js';
 
 const Details = () => {
     const [product, setProduct] = useState({})
     const [quantity, setQuantity] = useState(1);
-
+    const [comment, setComment] = useState(false);
     const { productId } = useParams();
     const dispatch = useDispatch();
     const plus = <FontAwesomeIcon icon={faPlus} />;
@@ -33,6 +34,9 @@ const Details = () => {
         dispatch(addToCart({ ...product, quantity }));
         alert('Успешно закупуване!');
     }
+    const addComment = () => {
+        setComment(true); 
+    }
     console.log(product.comments)
 
     return (
@@ -50,11 +54,12 @@ const Details = () => {
                             <button onClick={() => quantityHander('increase')}>{plus}</button>
                         </article>
                         <button className="button" id='buy-btn' onClick={addToCartHandler}>Купи</button>
-                        <button className="button">Добави коментар</button>
+                        <button className="button" onClick={addComment}>Добави коментар</button>
                     </article>
                 </div>
             </article>
             <article className="comments-wrapper">
+            {comment ? <AddComment/> : null}
             </article>
         </section>
     )
