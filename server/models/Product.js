@@ -19,16 +19,11 @@ const productSchema = new mongoose.Schema({
         type: String,
 
     },
-    comments: {
-        type: Array,
-        default: [],
-        minimize: false
-    },
     popularity: {
         type: Number,
         default: 0
     },
-    subType: {
+    subtype: {
         type: String
     }
 
