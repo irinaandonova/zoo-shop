@@ -9,8 +9,6 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await authService.login({ email, password });
             const { token, user } = response;
-            localStorage.setItem('user', user);
-            localStorage.setItem('token', token);
             setUserInfo(user);
             return { status: 'ok' }
         }
@@ -30,8 +28,6 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
     const logout = () => {
-        localStorage.clear('token');
-        localStorage.clear('user');
 
         setUserInfo('');
         return;
