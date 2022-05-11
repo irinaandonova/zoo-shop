@@ -33,6 +33,7 @@ const Register = () => {
         });
         if (userStatus === 'ok') {
             login({ email, password });
+            navigate('/');
         }
 
     }
