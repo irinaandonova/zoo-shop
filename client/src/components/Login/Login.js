@@ -6,7 +6,8 @@ const Login = () => {
     const navigate = useNavigate();
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
+        try{
+         const formData = new FormData(e.currentTarget);
         const email = formData.get('email');
         const password = formData.get('password');
         let response = await login({ email, password });
@@ -14,6 +15,11 @@ const Login = () => {
             navigate('/')
         }
         else {
+            navigate('/auth/register')
+        }
+        }
+        catch(err) {
+            console.log(err);
             navigate('/auth/register')
         }
 
