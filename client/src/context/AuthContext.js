@@ -9,6 +9,7 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await authService.login({ email, password });
             const { token, user } = response;
+            
             setUserInfo(user);
             return { status: 'ok' }
         }
@@ -28,8 +29,9 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
     const logout = () => {
+        
 
-        setUserInfo('');
+        setUserInfo({});
         return;
     }
 
