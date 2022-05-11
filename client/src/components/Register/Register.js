@@ -28,10 +28,10 @@ const Register = () => {
             throw new Error('Password mismatch!');
         }
 
-        let userInfo = await register({
+        let userStatus = await register({
             firstName, lastName, email, phoneNumber, address, town, password
         });
-        if (userInfo === 'ok') {
+        if (userStatus === 'ok') {
             login({ email, password });
         }
 
