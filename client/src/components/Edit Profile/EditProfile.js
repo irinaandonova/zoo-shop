@@ -1,13 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.js';
 
-import authService from '../../services/authService.js';
 
 const EditProfile = () => {
-    const { userInfo } = useContext(AuthContext);
-    const [info, setInfo] = useState(userInfo);
-    const _id = info._id;
+    const { userInfo, editProfile } = useContext(AuthContext);
+    const _id = userInfo._id;
     const navigate = useNavigate();
 
     const changeUserInfo = async (e) => {
@@ -23,10 +21,10 @@ const EditProfile = () => {
             address,
             phoneNumber
         }
-        const response = await authService.editProfile({ _id, user });
+        console.log(user);
+        const response = await editProfile({user});
         console.log(response);
-        if (response.status === 200) {
-            setInfo(user);
+        if (response.status === 'ok') {
             navigate('/');
         }
         else {
@@ -54,9 +52,7 @@ const EditProfile = () => {
                         <button type="submit" className='profile edit'>Редакция</button>
                     </li>
                 </ul>
-
             </form>
-
         </section>
     )
 }
