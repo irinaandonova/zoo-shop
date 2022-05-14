@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await authService.login({ email, password });
             const { token, user } = response;
-            
+
             setUserInfo(user);
             return { status: 'ok' }
         }
@@ -29,14 +29,32 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
     const logout = () => {
-        
-
         setUserInfo({});
         return;
     }
+    const editProfile = async ({user}) => {
+        console.log(`context ${user}`);
+        const response = await authService.editProfile({_id:userInfo._id, user});
+        if(response.status === 'ok') {
+            const editUser = {
+                _id: userInfo._id,
+                firstName: userInfo.firstName,
+                lastName: userInfo.lastName,
+                email: userInfo.email,
+                town: user.town,
+                phoneNumber: user.phoneNumber,
+                address: user.address,
+            }
+            setUserInfo(editUser);
+            return { status: 'ok'};
+        }
+        else {
+            return {status: 'err'};
+        }
+    }
 
     return (
-        <AuthContext.Provider value={{ login, logout, userInfo, register, isAuthenticated: userInfo.email }}>
+        <AuthContext.Provider value={{ login, logout, userInfo, register, isAuthenticated: userInfo.email, editProfile }}>
             {children}
         </AuthContext.Provider>
     )
