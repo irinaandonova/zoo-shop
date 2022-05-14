@@ -32,13 +32,11 @@ router.post('/login', async (req, res) => {
 
 router.post('/:_id', async(req, res) => {
     const _id = req.params._id;
-    const user = req.body.user;
-    console.log(req.body)
+    const user = req.body;
     try {
-        const result  = await authService.editProfile(_id, user);
-        console.log(result)
-        if(result) {
-            res.json({ status: 'ok'});
+        const result  = await authService.editProfile({_id, user});
+        if(result.status === 'ok') {
+            res.json({  status: 'ok' });
         }
     }
     catch(err) {

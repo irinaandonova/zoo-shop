@@ -4,8 +4,6 @@ const SECRET = '1376E6C33989144E433CAC15D747C';
 
 
 const register = async ({ email, firstName, lastName, phoneNumber, town, address, password, rePassword }) => {
-    console.log(`user - ${email}`);
-
     try {
         const user = new User({ email, firstName, lastName, phoneNumber, town, address, password, rePassword });
         await user.save();
@@ -20,9 +18,7 @@ const register = async ({ email, firstName, lastName, phoneNumber, town, address
 const login = async ({ email, password }) => {
     try {
         const user = await User.findOne({ email });
-        
         if (user.password === password) {
-
             const token = jwt.sign(
                 {
                     firstName: user.firstName,
@@ -44,10 +40,16 @@ const login = async ({ email, password }) => {
 
 }
 
-const editProfile = (_id, user) => {
-    console.log( user, _id)
-    return User.updateOne({_id}, {town: user.town, address: user.address, phoneNumber: user.phoneNumber});
-} 
+const editProfile = async ( {_id, user} ) => {
+    try {
+        const userInfo = await User.updateOne({ _id }, { town: user.town, address: user.address, phoneNumber: user.phoneNumber });
+        return { status: 'ok' }
+    }
+    catch (err) {
+        console.log(err);
+        return { status: 'err' }
+    }
+}
 const authService = {
     register,
     login,
