@@ -9,7 +9,6 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-
     rating: {
         type: Number,
         required: true,
@@ -25,7 +24,24 @@ const productSchema = new mongoose.Schema({
     },
     subtype: {
         type: String
-    }
+    },
+    comments: [
+        {
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+                required: true
+            },
+            username: {
+                type: String,
+                required: true
+            },
+            text: {
+                type: String,
+                required: true
+            },
+        }
+    ],
 
 });
 
