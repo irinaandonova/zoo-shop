@@ -9,7 +9,7 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await authService.login({ email, password });
             const { token, user } = response;
-
+            user.username = user.firstName + ' ' + user.lastName;
             setUserInfo(user);
             return { status: 'ok' }
         }
