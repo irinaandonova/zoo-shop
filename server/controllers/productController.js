@@ -23,7 +23,7 @@ router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
     const animals = ['dog', 'cat', 'roden', 'other'];
     console.log('here')
-    if(!animals.includes(animal)) {
+    if (!animals.includes(animal)) {
         res.status(404);
         return;
     }
@@ -36,8 +36,21 @@ router.get('/:animal', async (req, res) => {
         console.log('g');
         return { status: 'error' }
     }
-})
+});
 
+router.post('/:productId/comment/add', async (req, res) => {
+    const { userId, text, productId, username } = req.body;
+
+    try {
+        let response = await productService.addComment(userId, username, text, productId);
+        res.status(201).json(response);
+    }
+    catch (err) {
+        console.log(err);
+        return { status: 'error' }
+    }
+
+})
 
 
 module.exports = router;
