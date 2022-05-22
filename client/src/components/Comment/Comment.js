@@ -1,9 +1,9 @@
-const Comment =  ({comments}) => {
-    return(
+const Comment = ({ comment }) => {
+    return (
         <article className="comment-section">
-                <p className="username">{comments.username}</p>
-                <p className="comment-text">{comments.text}</p>
-                </article>
+            <p className="username">Потребителско име: {comment.username}</p>
+            <p className="comment-text">{comment.text}</p>
+        </article>
     )
 }
 
