@@ -1,15 +1,38 @@
-const baseUrl = 'http://localhost:4000/comment';
+const baseUrl = 'http://localhost:4000/comments';
 
-exports.getAll = async() => {
+exports.addComment = async( body ) => {
+    console.log(body);
     try {
-        let response = await fetch(`${baseUrl}/all`);
-        let all = await response.json();
-        return all;
+        let response = await fetch(`${baseUrl}/${body.productId}/add`, {
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({ ...body })
+        })
+        let result = await response.json();
+        return result;
     }
     catch(err) {
-        console.log(err);
-        return 'Couldnot get comments'
-    }
+        throw new Error(err);
+        }
 }
 
+exports.deleteComment = async( commentId, productId ) => {
+    console.log(`h ${productId}`);
+    try {
+        let response = await fetch(`${baseUrl}/${commentId}/delete`, {
+            headers: {
+                'Content-type' : 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({productId})
+        })
+        let result = await response.json();
+        return result;
+    }
+    catch(err) {
+        throw new Error(err);
+    }
+}
 
