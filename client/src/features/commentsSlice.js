@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState =  {productId: '', comments: []};
+const initialState =  {productId: '', commentsArr: []};
 const commentsSlice = createSlice({
     name: "comments",
     initialState,
@@ -8,18 +8,19 @@ const commentsSlice = createSlice({
             if(state.productId !== action.payload.productId) {
                 state.productId = action.payload.productId;                
             }
-            state.comments = action.payload.comments;
-            console.log(state.comments);
+            state.commentsArr = action.payload.commentsArr;
+            console.log(state.commentsArr[0]);
         },
         addComment: (state, action) => {
-            if(state.productId !== action.payload.productId) {
-                getComments({productId: action.payload.productId, comments:action.payload.comments})
-            }
-            console.log(state.comments);
-            state.comments.push(action.payload.comment);
+            state.commentsArr.push(action.payload.comment);
         },
+        deleteComment: (state, action) => {
+            let index = state.commentsArr.indexOf(action.payload._id);
+
+            state.commentsArr.splice(index, 1);
+        }
     }  
 })
 
-export const { getComments, addComment } = commentsSlice.actions;
+export const { getComments, addComment, deleteComment } = commentsSlice.actions;
 export default commentsSlice.reducer;
