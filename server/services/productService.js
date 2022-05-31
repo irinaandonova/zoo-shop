@@ -1,5 +1,4 @@
 const Product = require("../models/Product.js")
-const Comment = require("../models/Comment.js");
 
 const getAll = async () => {
     try {
@@ -14,7 +13,7 @@ const getAll = async () => {
 
 const getOne = async (id) => {
     try {
-        let product = await Product.findById(id).lean();
+        let product = await Product.findById(id).lean()
         return product;
     }
     catch (err) {
@@ -40,25 +39,11 @@ const getByType = async (animal) => {
     }
 }
 
-const addComment = async ( userId, username, text, productId ) => {
-    
-    try {
-        let product = await Product.findById(  productId );
-        product.comments.push({userId, username, text, productId});
-        await product.save();
-        return { status: 'ok' };
-    }
-    catch (err) {
-        console.log(err);
-        return { status: 'err' };
-    }
-}
-
 const productService = {
     getAll,
     getByType,
     getOne,
-    addComment
+    
 }
 
 module.exports = productService;
