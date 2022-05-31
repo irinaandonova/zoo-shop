@@ -27,19 +27,21 @@ const productSchema = new mongoose.Schema({
     },
     comments: [
         {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Comment',
+            },
             userId: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'User',
-                required: true
-            },
-            username: {
-                type: String,
-                required: true
             },
             text: {
                 type: String,
-                required: true
             },
+            username: {
+                type: String,
+            }
+              
         }
     ],
 
