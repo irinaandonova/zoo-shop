@@ -21,7 +21,8 @@ const Details = () => {
     const { userInfo } = useContext(AuthContext);
 
     const dispatch = useDispatch();
-    const comments = useSelector((state) => state.comments.comments);
+    const commentsArr = useSelector(state => state.comments.commentsArr);
+
     const plus = <FontAwesomeIcon icon={faPlus} />;
     const minus = <FontAwesomeIcon icon={faMinus} />;
 
@@ -37,8 +38,8 @@ const Details = () => {
     useEffect(() => {
         productService.getProduct(productId)
             .then(response => {
-                setProduct(response)
-                dispatch(getComments({productId, comments: response.comments}))
+                setProduct(response);
+                dispatch(getComments({productId, commentsArr: response.comments}))
             })
             .catch(err => console.log(err))
     }, [productId,dispatch]);
@@ -73,11 +74,9 @@ const Details = () => {
                 </div>
             </article>
             <article className="comments-wrapper">
-                {userInfo.email ? <AddComment  productId={productId} comments={comments}/> : null}
+                {userInfo.email ? <AddComment  productId={productId}/> : null}
                 
-                {console.log(`component ${comments}`)}
-                {comments.length > 0 ?
-                comments.map((x, index) => <Comment key={productId + index} comment={x}/>)
+                {commentsArr.length > 0 ? commentsArr.map(x => <Comment key={x._id}comment={x} productId={product._id}/>)
                 :
                 <p>Няма коментари</p>}
             </article>
@@ -86,3 +85,4 @@ const Details = () => {
 }
 
 export default Details;
+
