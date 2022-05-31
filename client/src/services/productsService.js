@@ -66,22 +66,9 @@ exports.getProduct = async(id) => {
         throw new Error(err);
     }
 }
-exports.addComment = async({username, text, productId, userId }) => {
-    try {
-        let response = await fetch(`${baseUrl}/${productId}/comment/add`, {
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({username, text, productId, userId })
-        })
-        let result = await response.json();
-        return result;
-    }
-    catch(err) {
-        throw new Error(err);
-    }
-}
+
+
+
 
 
 

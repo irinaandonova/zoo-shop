@@ -16,9 +16,9 @@ router.get('/details/:_id', async (req, res) => {
 
     let product = await productService.getOne(id);
     let result = JSON.stringify(product);
+
     res.json(result)
 });
-
 router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
     const animals = ['dog', 'cat', 'roden', 'other'];
@@ -37,20 +37,5 @@ router.get('/:animal', async (req, res) => {
         return { status: 'error' }
     }
 });
-
-router.post('/:productId/comment/add', async (req, res) => {
-    const { userId, text, productId, username } = req.body;
-
-    try {
-        let response = await productService.addComment(userId, username, text, productId);
-        res.status(201).json(response);
-    }
-    catch (err) {
-        console.log(err);
-        return { status: 'error' }
-    }
-
-})
-
 
 module.exports = router;
