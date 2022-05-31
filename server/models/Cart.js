@@ -33,12 +33,11 @@ totalPrice: {
     required: true,
     default: 0
 },
-    
-        
+status: {
+    type: String,
+    default: 'pending'
+}      
 }, { timestamps: true });
-    
-    
-
 
 const Cart = mongoose.model('Cart', cartSchema);
 
