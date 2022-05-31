@@ -2,7 +2,6 @@ const User = require('../models/User.js');
 const jwt = require('jsonwebtoken');
 const SECRET = '1376E6C33989144E433CAC15D747C';
 
-
 const register = async ({ email, firstName, lastName, phoneNumber, town, address, password, rePassword }) => {
     try {
         const user = new User({ email, firstName, lastName, phoneNumber, town, address, password, rePassword });

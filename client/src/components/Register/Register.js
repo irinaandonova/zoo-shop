@@ -5,7 +5,6 @@ import AuthContext from '../../context/AuthContext.js';
 const Register = () => {
     const navigate = useNavigate();
     const { register, login } = useContext(AuthContext);
-
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -17,17 +16,12 @@ const Register = () => {
         const phoneNumber = formData.get('phoneNumber');
         const password = formData.get('password');
         const rePassword = formData.get('repeat');
-
-
-        console.log(`Register ${email}`)
         if (!firstName || !lastName || !email || !phoneNumber || !address || !town || !password || !rePassword) {
             throw new Error(`All fieleds must be filled!`);
         }
-
         else if (password !== rePassword) {
             throw new Error('Password mismatch!');
         }
-
         let userStatus = await register({
             firstName, lastName, email, phoneNumber, address, town, password
         });
@@ -35,7 +29,6 @@ const Register = () => {
             login({ email, password });
             navigate('/');
         }
-
     }
     return (
         <section className="auth-form">
@@ -86,5 +79,4 @@ const Register = () => {
         </section>
     )
 }
-
 export default Register;

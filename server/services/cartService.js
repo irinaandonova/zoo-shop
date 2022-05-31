@@ -1,6 +1,5 @@
 const Cart = require('../models/Cart.js');
 
-
 const createOrder = async({order, user}) => {
     const { cartItems, totalPrice } = order;
     const cart = new Cart({user, cartItems, totalPrice});

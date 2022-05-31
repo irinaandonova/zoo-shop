@@ -2,10 +2,8 @@ import { useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext.js';
 
-
 const EditProfile = () => {
     const { userInfo, editProfile } = useContext(AuthContext);
-    const _id = userInfo._id;
     const navigate = useNavigate();
 
     const changeUserInfo = async (e) => {
@@ -15,15 +13,14 @@ const EditProfile = () => {
         const address = formData.get('address');
         const phoneNumber = formData.get('phoneNumber');
         const user = {
+            email: userInfo.email,
             firstName: userInfo.firstName,
             lastName: userInfo.lastName,
             town,
             address,
             phoneNumber
         }
-        console.log(user);
         const response = await editProfile({user});
-        console.log(response);
         if (response.status === 'ok') {
             navigate('/');
         }
@@ -31,7 +28,6 @@ const EditProfile = () => {
             throw new Error('Not able to edit!')
         }
     }
-
     return (
         <section className="auth-form">
             <form className="edit-form" onSubmit={changeUserInfo}>
@@ -56,6 +52,4 @@ const EditProfile = () => {
         </section>
     )
 }
-
-
 export default EditProfile;

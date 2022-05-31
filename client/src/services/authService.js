@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:4000/auth';
-
 const register = async ({ firstName, lastName, email, phoneNumber, address, town, password }) => {
     try {
         let response = await fetch(`${baseUrl}/register`, {
@@ -44,11 +43,9 @@ const editProfile = async({_id, user}) => {
         console.log('Request error', err);
     }
 }
-
 const authService = {
     editProfile,
     login,
     register
 }
-
 export default authService;

@@ -1,5 +1,6 @@
 import authService from '../services/authService.js';
 import { createContext, useState } from 'react';
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -33,7 +34,6 @@ export const AuthContextProvider = ({ children }) => {
         return;
     }
     const editProfile = async ({user}) => {
-        console.log(`context ${user}`);
         const response = await authService.editProfile({_id:userInfo._id, user});
         if(response.status === 'ok') {
             const editUser = {
@@ -52,14 +52,10 @@ export const AuthContextProvider = ({ children }) => {
             return {status: 'err'};
         }
     }
-
     return (
         <AuthContext.Provider value={{ login, logout, userInfo, register, isAuthenticated: userInfo.email, editProfile }}>
             {children}
         </AuthContext.Provider>
     )
-
 }
-
-
 export default AuthContext;

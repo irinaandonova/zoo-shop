@@ -7,7 +7,7 @@ const Login = () => {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try{
-         const formData = new FormData(e.currentTarget);
+        const formData = new FormData(e.currentTarget);
         const email = formData.get('email');
         const password = formData.get('password');
         let response = await login({ email, password });
@@ -22,7 +22,6 @@ const Login = () => {
             console.log(err);
             navigate('/auth/register')
         }
-
     }
     return (
         <section className="auth-form">
