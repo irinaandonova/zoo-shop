@@ -25,12 +25,10 @@ const getOne = async (id) => {
 const getByType = async (animal) => {
     try {
         const allProducts = await getAll();
-        const products = [];
-        allProducts.forEach(x => {
-            if (x.animal === animal) {
-                products.push(x);
-            }
-        })
+        let products = [];
+
+        products = allProducts.filter(x => x.animal === animal) 
+            
         return products;
     }
     catch (err) {
