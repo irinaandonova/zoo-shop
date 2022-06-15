@@ -1,10 +1,22 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../features/cartSlice.js";
+
 const Header = () => {
     const { userInfo, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const logoutHandler = () => {
+        logout();
+        dispatch(clearCart());
+        navigate('/');
+    }
+    
     return (
         <header id="site-header">
             <article className="upper-header">
@@ -13,7 +25,7 @@ const Header = () => {
                     <article className="user-header-article">
                         <p className="greeting">Здравейте, {userInfo.firstName}</p>
                         <Link to="/profile" className="profile">Към профила</Link>
-                        <input type="button" onClick={logout} value="Изход" className="profile logout" />
+                        <input type="button" onClick={logoutHandler} value="Изход" className="profile logout" />
                     </article>
                     :
                     <article className="guest-header-article">
@@ -28,7 +40,7 @@ const Header = () => {
                     <li><Link to="/cat">Котки</Link></li>
                     <li><Link to="/roden">Гризачи</Link></li>
                     <li><Link to="/other">Други</Link></li>
-                    <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart}/></Link></li>
+                    <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart}/></Link></li> 
                 </ul>
             </nav>
         </header>
