@@ -1,55 +1,72 @@
 import authService from '../services/authService.js';
+
 import { createContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({});
+    
+    const login = async ({ username, password }) => {
 
-    const login = async ({ email, password }) => {
         try {
-            const response = await authService.login({ email, password });
-            const { token, user } = response;
-            user.username = user.firstName + ' ' + user.lastName;
-            setUserInfo(user);
-            return { status: 'ok' }
+            const response = await authService.login({ username, password });
+            if (response.status === 'ok') {
+                const { user } = response;
+                
+                setUserInfo(user);
+                return { status: 'ok' }
+            }
+            else {
+                return { status: 'err' }
+            }
         }
         catch (err) {
             console.log(err);
             return { status: 'err' }
         }
-
     }
-    const register = async ({ firstName, lastName, email, phoneNumber, address, town, password }) => {
+
+    const register = async ({ firstName, lastName, email, username, phoneNumber, address, town, password }) => {
+
         try {
-            const response = await authService.register({ firstName, lastName, email, phoneNumber, address, town, password });
+            const response = await authService.register({ firstName, lastName, email, username, phoneNumber, address, town, password });
+
+            if (response.status === 'err') {
+                return response.value;
+            }
+
             return response.status;
         }
         catch (err) {
             console.log(err);
         }
     }
+
     const logout = () => {
-        setUserInfo({});
+        setUserInfo( {} );
         return;
     }
-    const editProfile = async ({user}) => {
-        const response = await authService.editProfile({_id:userInfo._id, user});
-        if(response.status === 'ok') {
+
+    const editProfile = async ({ user }) => {
+        const response = await authService.editProfile( { _id: userInfo._id, user } );
+        if (response.status === 'ok') {
             const editUser = {
                 _id: userInfo._id,
-                firstName: userInfo.firstName,
-                lastName: userInfo.lastName,
-                email: userInfo.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                username: user.username,
                 town: user.town,
                 phoneNumber: user.phoneNumber,
                 address: user.address,
             }
             setUserInfo(editUser);
-            return { status: 'ok'};
+
+            return { status: 'ok' };
         }
         else {
-            return {status: 'err'};
+            return { status: 'err' };
         }
     }
     return (
