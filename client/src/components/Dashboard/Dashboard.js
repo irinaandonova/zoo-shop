@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import * as productService from "../../services/productsService.js";
+import * as productService from "../../services/productService.js";
 import Product from "../Product/Product.js";
 
 const Dashboard = () => {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState('alphabetical');
-
+    
     const location = useLocation();
     const animal = location.pathname.split('/')[1];
-
+    
     useEffect(() => {
         productService.getProducts(animal, filter)
             .then(result => setProducts(result))
@@ -23,7 +23,7 @@ const Dashboard = () => {
                 <select id="filter" onChange={(e) => setFilter(e.currentTarget.value)} defaultValue={filter}>
                     <option value="alphabetical">Име(А-Я)</option>
                     <option value="alphabetical-reversed">Име(Я-А)</option>
-                    <option value="price-higher">Цена(Нискодящо)</option>
+                    <option value="price-higher">Цена(Низходящо)</option>
                     <option value="price-lower">Цена(Възходящо)</option>
                 </select>
             </article>
