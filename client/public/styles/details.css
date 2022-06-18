@@ -14,3 +14,24 @@
 .invisible {
     display: none;
 }
+.star-label {
+    border: 0px;
+    padding: 0;
+    width: 40px;
+}
+.stars-article {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+.star-btn {
+    display: none;
+    color: white;
+}
+.white {
+    color: white;
+}
+.rating-info {
+    font-size: 12px;
+    margin-top: 5px;
+}
