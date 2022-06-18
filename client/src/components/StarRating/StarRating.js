@@ -1,55 +1,61 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import * as productService from '../../services/productService.js';
 import AuthContext from '../../context/AuthContext.js';
-const StarRating = ({ _id }) => {
-    const [rating, setRating] = useState();
+import { useDispatch, useSelector } from 'react-redux';
+import { addRating } from '../../features/ratingSlice.js'
+const StarRating = ({ product }) => {
+    const rating = useSelector(state => state.rating.finalRating);
+    const usersVoted = useSelector(state => state.rating.rating).length;
+
+    const dispatch = useDispatch();
+
     const { userInfo } = useContext(AuthContext);
 
-    	useEffect(() => {
-            productService.getProduct(_id)
-                        .then(response => {
-                            let finalRating = response.rating / response.rating.length;
-                            console.log(response.rating);
-                            setRating(finalRating)
-                        })
-                        .catch(err => console.log(err))
-        }, [_id]);
+    const onVoteHandler = async (e) => {
+        if (!userInfo._id) {
+            alert('Тряба да влезете в профила си, за да гласувате');
+        }
 
-        const onVoteHandler = async(e) => {
-            console.log(e.value);
-            let rating = { user: userInfo._id, value: e.value };
-            try {
-            let response = await productService.rateProduct(_id, rating);
-            if(response.status === 'ok') {
-                setRating(response.status);
-            }
-            }
-            catch(err) {
-                console.log(err);
+        try {
+            let response = await productService.rateProduct({ _id: product._id, userId: userInfo._id, rating: e.target.value });
+            console.log(response);
+            if (response.status === 'ok') {
+                console.log('h');
+                dispatch(addRating({ rating: e.target.value, userId: userInfo._id }));
             }
         }
+        catch (err) {
+            console.log(err);
+        }
+    }
     return (
-        <article className="stars-article">
-            {[...Array(5)].map((star, index) => {
-                const ratingValue = index + 1;
-                index < rating ?
-                    star =
-                    <label className="star-label">
-                        <input type="radio" className="star-btn" value={ratingValue} onClick={(value) => onVoteHandler}/>
-                        <FontAwesomeIcon icon={faStar} />
-                    </label>
-                    :
-                    star =
-                    <label className="star-label">
-                        <input type="radio" className="star-btn white" value={ratingValue} />
-                        <FontAwesomeIcon icon={faStar} color={'#cac6c6'}/>
-                    </label>
-                return star;
-            })}
+        <article className='stars-info-article'>
+            <article className="stars-article">
+                {[...Array(5)].map((star, index) => {
+                    const ratingValue = index + 1;
+                    index < rating ?
+                        star =
+                        <label className="star-label">
+                            <input type="radio" className="star-btn" value={ratingValue} onClick={onVoteHandler} />
+                            <FontAwesomeIcon icon={faStar} color={'#020202;'} />
+                        </label>
+                        :
+                        star =
+                        <label className="star-label">
+                            <input type="radio" className="star-btn white" value={ratingValue} onClick={onVoteHandler} />
+                            <FontAwesomeIcon icon={faStar} color={'#cac6c6'} />
+                        </label>
+                    return star;
+                })}
+            </article>
+            {rating ?
+                <p className='rating-info'>Рейтинг {rating} от {usersVoted} гласували</p>
+                :
+                <p className='rating-info'>Бъдете първият, който ще гласува за този продукт</p>
+            }
         </article>
-
     )
 }
 
