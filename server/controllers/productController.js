@@ -9,16 +9,25 @@ router.get('', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return res.json( { status: 'err' });
+        return res.json({ status: 'err' });
     }
-})
+});
+
 router.get('/details/:_id', async (req, res) => {
     const id = req.params._id;
-    let product = await productService.getOne(id);
+    try {
+        let product = await productService.getOne(id);
 
-    let result = JSON.stringify(product);
-    res.json(result)
+        let result = JSON.stringify(product);
+        res.json(result)
+    }
+    catch (err) {
+        console.log(err);
+        return res.json({ status: 'err' });
+    }
+
 });
+
 router.get('/:animal', async (req, res) => {
     const animal = req.params.animal;
     const animals = ['dog', 'cat', 'roden', 'other'];
@@ -30,12 +39,26 @@ router.get('/:animal', async (req, res) => {
     }
     try {
         let products = await productService.getByType(animal);
-        
-        res.json({status: 'ok', products });
+
+        res.json({ status: 'ok', products });
     }
     catch (err) {
-        console.log('g');
-        return { status: 'error' }
+        console.log(err);
+        return res.json({ status: 'err' });
+    }
+});
+
+router.post('/:_id/rate', async (req, res) => {
+    const { _id } = req.params;
+    const { userId, rating } = req.body;
+
+    try {
+        let response = await productService.rateProduct({ _id, userId, rating });
+        res.json(response);
+    }
+    catch (err) {
+        console.log(err);
+        return res.json({ status: 'err' });
     }
 });
 
