@@ -9,11 +9,20 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    rating: {
-        type: Number,
-        required: true,
-        default: 3
-    },
+    rating: [
+            {
+                userId: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'User',
+                    required: true
+                },
+                rating: {
+                    type: Number,
+                    required: true
+                }
+            }
+        ]
+    ,
     description: {
         type: String,
 
@@ -21,9 +30,6 @@ const productSchema = new mongoose.Schema({
     popularity: {
         type: Number,
         default: 0
-    },
-    subtype: {
-        type: String
     },
     comments: [
         {
@@ -44,9 +50,7 @@ const productSchema = new mongoose.Schema({
               
         }
     ],
-
 });
-
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
