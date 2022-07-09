@@ -19,6 +19,10 @@ const Cart = () => {
         }
 
         try {
+            if(cart.cartItems.length === 0) {
+                alert('Нямате продукти в количката!');
+                return;
+            }
             let response = await cartService.createOrder({ order: cart, userId: userInfo._id });
 
             let timestamp = new Date(response.cart.createdAt);
