@@ -5,39 +5,42 @@ router.post('/register', async (req, res) => {
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
+    const username = req.body.username;
     const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
     const town = req.body.town;
     const password = req.body.password;
     const rePassword = req.body.rePassword;
 
-    const user = await authService.register({ email, firstName, lastName, phoneNumber, town, address, password, rePassword });
-    res.json({ status: user.status });
+    const user = await authService.register({ email, firstName, lastName, username, phoneNumber, town, address, password, rePassword });
+    res.json(user);
 })
 router.post('/login', async (req, res) => {
-    const email = req.body.email;
+    const username = req.body.username;
     const password = req.body.password;
+
     try {
-        const result = await authService.login({ email, password });
-        res.json({ status: result.status, user: result.user, token: result.token });
+        const result = await authService.login({ username, password });
+        res.json({ status: result.status, user: result.user });
     }
     catch (err) {
         console.log(err);
         return { status: 'error' };
     }
 })
-router.post('/:_id', async(req, res) => {
+router.post('/:_id', async (req, res) => {
     const _id = req.params._id;
     const user = req.body;
     try {
-        const result  = await authService.editProfile({_id, user});
-        if(result.status === 'ok') {
-            res.json({  status: 'ok' });
+        const result = await authService.editProfile({ _id, user });
+
+        if (result.status === 'ok') {
+            res.json({ status: 'ok' });
         }
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
-        res.json({status: 'error'});
+        res.json({ status: 'error' });
     }
 })
 
