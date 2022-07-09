@@ -16,7 +16,7 @@ const Header = () => {
         dispatch(clearCart());
         navigate('/');
     }
-    
+
     return (
         <header id="site-header">
             <article className="upper-header">
@@ -40,7 +40,12 @@ const Header = () => {
                     <li><Link to="/cat">Котки</Link></li>
                     <li><Link to="/roden">Гризачи</Link></li>
                     <li><Link to="/other">Други</Link></li>
-                    <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart}/></Link></li> 
+                    {
+                        userInfo._id ?
+                            <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
+                            :
+                            null
+                    }
                 </ul>
             </nav>
         </header>
