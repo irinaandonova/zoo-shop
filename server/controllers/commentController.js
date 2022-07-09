@@ -16,11 +16,10 @@ router.post('/:productId/add', async (req, res) => {
 router.post('/:commentId/delete', async(req, res) => {
     const { commentId } = req.params;
     const { productId } = req.body;
-    console.log(productId);
 
     try {
         let response = await commentService.deleteComment(commentId, productId);
-        res.status(201).json(response);
+        res.json({ status: 'ok', response});
     }
     catch (err) {
         console.log(err);
