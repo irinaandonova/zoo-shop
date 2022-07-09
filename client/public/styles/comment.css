@@ -22,3 +22,10 @@
     padding: 2px 3px;
     margin-top: 0;
 }
+.comment-info {
+    display: flex;
+    justify-content: space-between;
+}
+.comment-timestamp {
+    margin: 0;
+}

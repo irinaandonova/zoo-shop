@@ -35,3 +35,12 @@
     font-size: 12px;
     margin-top: 5px;
 }
+.subtype-p {
+    padding: 0px;
+    background: white;
+    border: 1px solid white;
+}
+.subtype-article {
+    display: flex;
+    align-items: center;
+}
