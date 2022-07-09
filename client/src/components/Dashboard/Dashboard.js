@@ -6,16 +6,21 @@ import Product from "../Product/Product.js";
 const Dashboard = () => {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState('alphabetical');
-    
+    const [ subtype, setSubtype ] = useState('all');
+
     const location = useLocation();
     const animal = location.pathname.split('/')[1];
     
     useEffect(() => {
-        productService.getProducts(animal, filter)
+        productService.getProducts(animal, filter, subtype)
             .then(result => setProducts(result))
             .catch(err => console.log(err))
-    }, [animal, filter]);
+    }, [animal, filter, subtype]);
 
+    const subtypeHandler = async(e) => {
+        await setSubtype(e.target.value);
+        
+    }
     return (
         <section className="home-page" >
             <article className="filter-article">
@@ -27,6 +32,13 @@ const Dashboard = () => {
                     <option value="price-lower">Цена(Възходящо)</option>
                 </select>
             </article>
+            <article className="subtype-article">
+                    <p className="subtype-p">Вид продукти: </p>
+                    <button className="subtype profile" onClick={subtypeHandler} value="all">Всички</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="dry">Суха храна</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="canned">Консервирана храна</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="accessory">Аксесоари</button>
+                </article>
             <article className="products">
                 <ul className="all-products">
                     {products.length > 0 ?
