@@ -9,13 +9,16 @@ const EditProfile = () => {
     const changeUserInfo = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
+        const firstName = formData.get('firstName');
+        const lastName = formData.get('lastName');
         const town = formData.get('town');
         const address = formData.get('address');
         const phoneNumber = formData.get('phoneNumber');
         const user = {
             email: userInfo.email,
-            firstName: userInfo.firstName,
-            lastName: userInfo.lastName,
+            firstName,
+            lastName,
+            username: userInfo.username,
             town,
             address,
             phoneNumber
@@ -32,6 +35,14 @@ const EditProfile = () => {
         <section className="auth-form">
             <form className="edit-form" onSubmit={changeUserInfo}>
                 <ul className="form-input">
+                <li>
+                        <label htmlFor="first-name">Име:</label>
+                        <input type="text" className="inputFields" name="firstName" defaultValue={userInfo.firstName}/>
+                    </li>
+                    <li>
+                        <label htmlFor="last-name">Фамилия:</label>
+                        <input type="text" className="inputFields" name="lastName" defaultValue={userInfo.lastName}/>
+                    </li>
                     <li>
                         <label htmlFor="town">Град:</label>
                         <input type="text" className="inputFields" name="town" defaultValue={userInfo.town} />
