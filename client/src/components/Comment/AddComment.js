@@ -12,12 +12,12 @@ const AddComment = (productId) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const text = formData.get('text');
-
         try {
             let response = await commentService.addComment({ productId: Object.values(productId)[0], userId: userInfo._id, username: userInfo.username, text });
             if (response.status === 'ok') {
                 let comment = response.comment;
-                dispatch(addComment({ productId, comment }))
+                dispatch(addComment({ productId, comment }));
+                e.target.reset();
             }
             else {
                 throw new Error('Couldnot add comment!')
