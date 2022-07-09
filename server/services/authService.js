@@ -1,16 +1,20 @@
 const User = require('../models/User.js');
-const jwt = require('jsonwebtoken');
-const SECRET = '1376E6C33989144E433CAC15D747C';
+const authMiddleware = require('../middlewares/authMiddleware.js');
+
+const SALT = 15;
 
 const register = async ({ email, firstName, lastName, username, phoneNumber, town, address, password, rePassword }) => {
+    let hashedPass = await authMiddleware.hashPassword(password, SALT);
+    
     try {
-        const user = new User({ email, firstName, lastName, phoneNumber, town, username, address, password, rePassword });
+        const user = new User({ email, firstName, lastName, phoneNumber, town, username, address, password: hashedPass, rePassword });
+        console.log(user);
         await user.save();
-        
+
         return { status: 'ok', user };
     }
     catch (err) {
-        if(err.code === 11000) {
+        if (err.code === 11000) {
             return { status: 'err', message: 'Duplicate keys', value: err.keyValue }
         }
         return { status: 'error' };
@@ -20,7 +24,8 @@ const register = async ({ email, firstName, lastName, username, phoneNumber, tow
 const login = async ({ username, password }) => {
     try {
         const user = await User.findOne({ username });
-        if (user.password === password) {
+        let isPasswordRight = await authMiddleware.comparePassword(password, user.password);
+        if (isPasswordRight) {
             return { status: 'ok', user }
         }
         else {
@@ -33,7 +38,7 @@ const login = async ({ username, password }) => {
     }
 }
 
-const editProfile = async ( {_id, user} ) => {
+const editProfile = async ({ _id, user }) => {
     try {
         const userInfo = await User.updateOne({ _id }, { town: user.town, address: user.address, phoneNumber: user.phoneNumber });
         return { status: 'ok' }
