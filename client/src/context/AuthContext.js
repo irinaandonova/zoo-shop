@@ -60,6 +60,7 @@ export const AuthContextProvider = ({ children }) => {
                 town: user.town,
                 phoneNumber: user.phoneNumber,
                 address: user.address,
+                hasOrder: userInfo.hasOrder
             }
             setUserInfo(editUser);
 
