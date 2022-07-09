@@ -10,26 +10,25 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     rating: [
-            {
-                userId: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'User',
-                    required: true
-                },
-                rating: {
-                    type: Number,
-                    required: true
-                }
+        {
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+                required: true
+            },
+            rating: {
+                type: Number,
+                required: true
             }
-        ]
+        }
+    ]
     ,
     description: {
         type: String,
 
     },
-    popularity: {
-        type: Number,
-        default: 0
+    subtype: {
+        type: String
     },
     comments: [
         {
@@ -46,9 +45,12 @@ const productSchema = new mongoose.Schema({
             },
             username: {
                 type: String,
+            },
+            createdAt: {
+                type: Date
             }
-              
-        }
+
+        },
     ],
 });
 const Product = mongoose.model('Product', productSchema);
