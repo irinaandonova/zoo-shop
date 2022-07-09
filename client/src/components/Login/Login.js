@@ -1,24 +1,27 @@
-import {  useContext } from "react";
-import { Link,  useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from '../../context/AuthContext.js';
 const Login = () => {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        try{
-        const formData = new FormData(e.currentTarget);
-        const email = formData.get('email');
-        const password = formData.get('password');
-        let response = await login({ email, password });
-        if(response.status === 'ok') {
-            navigate('/')
+
+        try {
+            const formData = new FormData(e.currentTarget);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            let response = await login({ username, password });
+            if (response.status === 'ok') {
+                navigate('/')
+            }
+            else {
+                alert('Няма такова потребителско име или грешна парола!')
+            }
         }
-        else {
-            navigate('/auth/register')
-        }
-        }
-        catch(err) {
+        catch (err) {
             console.log(err);
             navigate('/auth/register')
         }
@@ -28,8 +31,8 @@ const Login = () => {
             <form className="loginForm" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
-                        <label htmlFor="email">E-mail:</label>
-                        <input type="email" className="inputFields" name="email" />
+                        <label htmlFor="email">Потребителско име:</label>
+                        <input type="text" className="inputFields" name="username" />
                     </li>
                     <li>
                         <label htmlFor="password">Парола:</label>
