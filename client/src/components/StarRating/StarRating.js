@@ -37,7 +37,7 @@ const StarRating = ({ product }) => {
                     const ratingValue = index + 1;
                     index < rating ?
                         star =
-                        <label className="star-label">
+                        <label className="star-label" key={index}>
                             <input type="radio" className="star-btn" value={ratingValue} onClick={onVoteHandler} />
                             <FontAwesomeIcon icon={faStar} color={'#020202;'} />
                         </label>
