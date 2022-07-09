@@ -1,18 +1,6 @@
 const router = require('express').Router();
 const productService = require('../services/productService.js');
 
-router.get('', async (req, res) => {
-    try {
-        let products = await productService.getAll();
-
-        res.json({ status: 'ok', products });
-    }
-    catch (err) {
-        console.log(err);
-        return res.json({ status: 'err' });
-    }
-});
-
 router.get('/details/:_id', async (req, res) => {
     const id = req.params._id;
     try {
@@ -28,9 +16,11 @@ router.get('/details/:_id', async (req, res) => {
 
 });
 
-router.get('/:animal', async (req, res) => {
+router.get('/:animal/:subtype', async (req, res) => {
     const animal = req.params.animal;
-    const animals = ['dog', 'cat', 'roden', 'other'];
+    const subtype = req.params.subtype;
+    console.log(subtype);
+    const animals = ['all', 'dog', 'cat', 'roden', 'other'];
 
     if (!animals.includes(animal)) {
         res.json({ status: 'error' });
@@ -38,7 +28,7 @@ router.get('/:animal', async (req, res) => {
         return;
     }
     try {
-        let products = await productService.getByType(animal);
+        let products = await productService.getByType(animal, subtype);
 
         res.json({ status: 'ok', products });
     }
