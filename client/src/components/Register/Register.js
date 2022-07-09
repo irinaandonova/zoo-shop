@@ -5,29 +5,46 @@ import AuthContext from '../../context/AuthContext.js';
 const Register = () => {
     const navigate = useNavigate();
     const { register, login } = useContext(AuthContext);
+    
     const onSubmitHandler = async (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.currentTarget);
         const firstName = formData.get('firstName');
         const lastName = formData.get('lastName');
         const town = formData.get('town');
         const address = formData.get('address');
         const email = formData.get('email');
+        const username = formData.get('username')
         const phoneNumber = formData.get('phoneNumber');
         const password = formData.get('password');
         const rePassword = formData.get('repeat');
-        if (!firstName || !lastName || !email || !phoneNumber || !address || !town || !password || !rePassword) {
+
+        if (!firstName || !lastName || !email || !phoneNumber || !address || !town || !password || !rePassword || !username) {
             throw new Error(`All fieleds must be filled!`);
         }
         else if (password !== rePassword) {
             throw new Error('Password mismatch!');
         }
-        let userStatus = await register({
-            firstName, lastName, email, phoneNumber, address, town, password
+
+        let response = await register({
+            firstName, lastName, email, username, phoneNumber, address, town, password
         });
-        if (userStatus === 'ok') {
-            login({ email, password });
+
+        if (response === 'ok') {
+            login({ username, password });
             navigate('/');
+        }
+        else {
+            if (response.email) {
+                alert(`Такъв имейл вече е регситриран!`)
+            }
+            else if (response.username) {
+                alert(`Такова потребителско име вече съществува!`)
+            }
+            else {
+                console.log(response);
+            }
         }
     }
     return (
@@ -45,6 +62,10 @@ const Register = () => {
                     <li>
                         <label htmlFor="email">E-mail:</label>
                         <input type="email" className="inputFields" name="email" />
+                    </li>
+                    <li>
+                        <label htmlFor="username">Потребителско име</label>
+                        <input type="text" className="inputFields" name="username" />
                     </li>
                     <li>
                         <label htmlFor="town">Град:</label>
@@ -75,7 +96,6 @@ const Register = () => {
                     <Link to="/login">Вход</Link>
                 </article>
             </form>
-
         </section>
     )
 }
