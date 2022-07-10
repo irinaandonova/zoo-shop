@@ -1,12 +1,18 @@
 const Cart = require('../models/Cart.js');
+const User = require('../models/User.js');
 
-const createOrder = async({order, user}) => {
+const createOrder = async({ order, userId }) => {
     const { cartItems, totalPrice } = order;
-    const cart = new Cart({user, cartItems, totalPrice});
-    console.log(cart);
+
     try {
+        const cart = await new Cart({user: userId, cartItems, totalPrice});
         await cart.save();
-        return 'ok'
+
+        const user = await User.findById(userId);
+        user.hasOrder = true;
+        user.save();
+
+        return { status: 'ok', cart };
     }
     catch(err) {
         console.log(err);
@@ -15,7 +21,7 @@ const createOrder = async({order, user}) => {
 }
 
 const cartService = {
-    createOrder
+    createOrder,
 }
 
 module.exports = cartService;
