@@ -1,16 +1,22 @@
 const Product = require("../models/Product.js")
 
-const getAll = async () => {
+const getAll = async (subtype) => {
     try {
-        let result = await Product.find({}).lean();
-        return result;
+        
     }
     catch (err) {
         console.log(err);
         return { status: 'err' };
     }
 }
+const subtypeFilter = (products, subtype) => {
+    if(subtype === 'all') {
+        return products;
+    }
+    let result = products.filter(x => x.subtype === subtype);
+    return result;
 
+}
 const getOne = async (id) => {
     try {
         let product = await Product.findById(id).lean()
@@ -22,14 +28,15 @@ const getOne = async (id) => {
     }
 }
 
-const getByType = async (animal) => {
+const getByType = async (animal, subtype) => {
     try {
-        const allProducts = await getAll();
-        let products = [];
+        let products = await Product.find({}).lean();
+        if(animal !== 'all') {
+        products = products.filter(x => x.animal === animal);
+        }
+        let result = subtypeFilter(products, subtype);
 
-        products = allProducts.filter(x => x.animal === animal)
-
-        return products;
+        return result;
     }
     catch (err) {
         console.log(err);
