@@ -10,20 +10,15 @@ const Item = ({  item }) => {
     const [quantity, setQuantity] = useState(item.quantity);
     const _id = item._id;
 
-    
     const quantityHander = (type) => {
         if (type === "decrement") {
-             dispatch(decrement({ _id }));
+            dispatch(decrement({ _id }));
             setQuantity(quantity - 1);
-            console.log(quantity);
         } else {
-             dispatch(increment({_id}));
+            dispatch(increment({_id}));
             setQuantity(quantity + 1);
-            console.log(quantity);
         }
     }
-
-
     return (
         <tr className="items-list">
             <td className="product-picture"><img className="item-image" src={item.imageUrl} alt="product" /></td>

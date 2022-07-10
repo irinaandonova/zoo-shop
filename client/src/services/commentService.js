@@ -1,7 +1,6 @@
 const baseUrl = 'http://localhost:4000/comments';
 
 exports.addComment = async( body ) => {
-    console.log(body);
     try {
         let response = await fetch(`${baseUrl}/${body.productId}/add`, {
             headers : {
@@ -19,7 +18,6 @@ exports.addComment = async( body ) => {
 }
 
 exports.deleteComment = async( commentId, productId ) => {
-    console.log(`h ${productId}`);
     try {
         let response = await fetch(`${baseUrl}/${commentId}/delete`, {
             headers: {
