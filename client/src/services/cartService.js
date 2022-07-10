@@ -1,12 +1,12 @@
 const baseUrl = 'http://localhost:4000/cart';
 
-const createOrder = async({order, user}) => {
+const createOrder = async({ order, userId }) => {
     let response = await fetch(baseUrl, {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify({order, user})
+        body: JSON.stringify({order, userId})
     });
 
     let result = await response.json();
@@ -15,7 +15,7 @@ const createOrder = async({order, user}) => {
 }
 
 const cartService = {
-    createOrder
+    createOrder,
 }
 
 export default cartService;
