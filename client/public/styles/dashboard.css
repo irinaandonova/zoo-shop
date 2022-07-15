@@ -18,3 +18,17 @@
     border-left: 2px solid black;
     border-top: 1px solid black;
 }
+.subtype {
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+.subtype-p {
+    padding: 0px;
+    background: white;
+    border: 1px solid white;
+    margin-right: 5px;
+}
+.subtype-article {
+    display: flex;
+    align-items: center;
+}
