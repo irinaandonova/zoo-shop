@@ -31,7 +31,7 @@ const AddComment = (productId) => {
     return (
         <section className="add-comment-article">
             <form onSubmit={addCommentHandler} className="add-comment-form">
-                <textarea className="add-comment" name="text">
+                <textarea className="add-comment" name="text" maxLength={100}>
                 </textarea>
                 <button className="button comment-btn">Добавяне</button>
             </form>
