@@ -10,11 +10,12 @@ import EditProfile from './components/Edit Profile/EditProfile.js';
 import Details from './components/Details/Details.js';
 import Cart from './components/Cart/Cart.js';
 import OrderInfo from './components/OrderInfo/OrderInfo.js';
+import { OrderContextProvider } from './context/OrderContext.js';
 function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-      <Header />
+        <Header />
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='/auth/login' element={<Login />} />
@@ -26,8 +27,11 @@ function App() {
           <Route path='/profile' element={<MyProfile />} />
           <Route path="/profile/:_id/edit" element={<EditProfile />} />
           <Route path='/details/:productId' element={<Details />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/cart/order-info' element={OrderInfo}/>
+          <OrderContextProvider>
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart/order-info' element={OrderInfo} />
+          </OrderContextProvider>
+
         </Routes>
       </AuthContextProvider>
     </div>
