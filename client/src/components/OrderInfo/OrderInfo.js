@@ -25,17 +25,17 @@ const OrderInfo = () => {
         if (payment === 'cash') {
             let response = await cartService.createOrder({ order: cart, userId: userInfo._id, userDetails });
             if (response.status === 'ok') {
-                const deliveryDate = convertTime(response.createdAt);
+                const deliveryDate = convertTime(response.createdAt, 2);
                 const template_params = { to_name: userInfo.firstName, orderId: response.cart._id, deliveryDate, to_email: userInfo.email }
-                const emailSent = await cartService.sendEmail(template_params);
-                if (emailSent) {
-                    userInfo.hasOrder = true;
-                    navigate('/cart');
-                }
                 
+                await cartService.sendEmail(template_params);
 
+                userInfo.hasOrder = true;
+                navigate('/cart');
             }
-
+            else {
+                alert('Unsuccessful purchase!')
+            }
 
         }
     }
