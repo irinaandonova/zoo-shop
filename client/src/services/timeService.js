@@ -1,6 +1,6 @@
-exports.convertTime = (createdAt) => {
+exports.convertTime = (createdAt, additionalTime) => {
     let timestamp = new Date(createdAt);
-            timestamp.setDate(timestamp.getDate() + 2);
+            timestamp.setDate(timestamp.getDate() + additionalTime);
 
             return timestamp.toLocaleDateString('bg-BG', {
                 year: 'numeric',
