@@ -23,23 +23,23 @@ const Header = () => {
                 <Link to="/" className="logo">ZOOLAND</Link>
                 {userInfo._id ?
                     <article className="user-header-article">
-                        <p className="greeting">Здравейте, {userInfo.firstName}</p>
-                        <Link to="/profile" className="profile">Към профила</Link>
-                        <input type="button" onClick={logoutHandler} value="Изход" className="profile logout" />
+                        <p className="greeting">Hello, {userInfo.firstName}</p>
+                        <Link to="/profile" className="profile">My profile</Link>
+                        <input type="button" onClick={logoutHandler} value="Exit profile" className="profile logout" />
                     </article>
                     :
                     <article className="guest-header-article">
-                        <Link to="/auth/login" className="profile">Вход</Link>
-                        <Link to="/auth/register" className="profile">Регистация</Link>
+                        <Link to="/auth/login" className="profile">Login</Link>
+                        <Link to="/auth/register" className="profile">Register</Link>
                     </article>
                 }
             </article>
             <nav className="navbar">
                 <ul className="nav-list">
-                    <li><Link to="/dog">Кучета</Link></li>
-                    <li><Link to="/cat">Котки</Link></li>
-                    <li><Link to="/roden">Гризачи</Link></li>
-                    <li><Link to="/other">Други</Link></li>
+                    <li><Link to="/dog">Dogs</Link></li>
+                    <li><Link to="/cat">Catas</Link></li>
+                    <li><Link to="/roden">Rodens</Link></li>
+                    <li><Link to="/other">Other</Link></li>
                     {
                         userInfo._id ?
                             <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link></li>

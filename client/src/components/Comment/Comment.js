@@ -10,7 +10,6 @@ const Comment = ({ comment, productId }) => {
     const { userInfo } = useContext(AuthContext);
     const dispatch = useDispatch();
     let createdAt = new Date(comment.createdAt);
-    console.log(comment)
     let timestamp = createdAt.toLocaleDateString('bg-BG', {
         year: 'numeric',
         month: '2-digit',
@@ -27,7 +26,7 @@ const Comment = ({ comment, productId }) => {
                 return;
             }
             else {
-                alert('Грешка при изтриването на коемнтара!');
+                alert('Couldnot delete comment!');
             }
         }
         catch (err) {
@@ -37,12 +36,12 @@ const Comment = ({ comment, productId }) => {
     return (
         <article className="comment-section">
             <article className="comment-info">
-            <p className="username">Потребителско име: {comment.username}</p>
+            <p className="username">Username: {comment.username}</p>
             <p className="comment-timestamp">{timestamp}</p>
             </article>
             <p className="comment-text">{comment.text}</p>
             {userInfo._id === comment.userId ?
-                <button className="btn" onClick={deleteCommentHandler}>Изтриване на коментара</button> : null}
+                <button className="btn" onClick={deleteCommentHandler}>Delete comment</button> : null}
         </article>
     )
 }

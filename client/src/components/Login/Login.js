@@ -31,20 +31,20 @@ const Login = () => {
             <form className="loginForm" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
-                        <label htmlFor="email">Потребителско име:</label>
+                        <label htmlFor="email">Username:</label>
                         <input type="text" className="inputFields" name="username" />
                     </li>
                     <li>
-                        <label htmlFor="password">Парола:</label>
+                        <label htmlFor="password">Password:</label>
                         <input type="password" className="inputFields" name="password" />
                     </li>
                     <li id="center-btn">
-                        <input type="submit" value="Вход" />
+                        <input type="submit" value="Sign in" />
                     </li>
                 </ul>
                 <article className="sign-up-link">
-                    <p className="no-profile">Нямате профил?</p>
-                    <Link to="/register">Регистрация</Link>
+                    <p className="no-profile">Don't have a profile?</p>
+                    <Link to="/register">Sign up</Link>
                 </article>
             </form>
         </section>

@@ -31,25 +31,25 @@ const Cart = () => {
     return (
         <section className="cart-wrapper">
             {userInfo.hasOrder ?
-                <p>Вашата поръчка се обработва</p>
+                <p>Your order is being processed</p>
                 :
                 <article>
                     <table className="cart-items-table">
                         <thead className="items-list">
                             <tr>
-                                <td>Снимка</td>
-                                <td>Име на продукта</td>
-                                <td>Kоличество</td>
-                                <td>Единична цена</td>
-                                <td>Общо</td>
+                                <td>Image</td>
+                                <td>Product Name</td>
+                                <td>Quantity</td>
+                                <td>Unit price</td>
+                                <td>Total</td>
                             </tr>
                         </thead>
                         <tbody>
                             {cart.cartItems.map(x => <Item item={x} key={x._id} />)}
                         </tbody>
                     </table>
-                    <p className="item">Обща сума: {(cart.totalPrice).toFixed(2)}лв</p>
-                    <button className="button" onClick={createOrderHandler}>Завърши поръчката</button>
+                    <p className="item">Total price: {(cart.totalPrice).toFixed(2)}lv</p>
+                    <button className="button" onClick={createOrderHandler}>Finalize order</button>
                 </article>
             }
 
