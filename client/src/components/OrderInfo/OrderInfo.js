@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import cartService from "../../services/cartService.js";
 import { useSelector } from "react-redux";
 import { convertTime } from "../../services/timeService.js";
+import OrderContext from "../../context/OrderContext.js";
 
 const OrderInfo = () => {
     const { userInfo } = useContext(AuthContext);
+    const { orderInfo, getOrderInfo } = useContext(OrderContext);
+    
     const cart = useSelector((state) => state.cart);
     const navigate = useNavigate();
 
@@ -22,8 +25,9 @@ const OrderInfo = () => {
             address,
             phoneNumber
         }
+         getOrderInfo(cart, userDetails, payment);
         if (payment === 'cash') {
-            let response = await cartService.createOrder({ order: cart, userId: userInfo._id, userDetails });
+            let response = await cartService.createOrder(orderInfo);
             if (response.status === 'ok') {
                 const deliveryDate = convertTime(response.createdAt, 2);
                 const template_params = { to_name: userInfo.firstName, orderId: response.cart._id, deliveryDate, to_email: userInfo.email }
@@ -36,7 +40,9 @@ const OrderInfo = () => {
             else {
                 alert('Unsuccessful purchase!')
             }
-
+        }
+        else {
+            navigate('/cart/card-payment');
         }
     }
     return (
