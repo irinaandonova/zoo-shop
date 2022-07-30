@@ -71,7 +71,7 @@ const Details = () => {
                 <img className="img" src={window.location.origin + "/" + product.imageUrl} alt="product" />
                 <div className="details">
                     <p>{product.description}</p>
-                    <p>Цена: {product.price}лв</p>
+                    <p>PriceL: {product.price}lv</p>
                     <article className="buy-article">
                         <article className="quantity-wrapper">
                             <button onClick={() => quantityHander('decrease')}>{minus}</button>
@@ -87,7 +87,7 @@ const Details = () => {
                 {userInfo.email ? <AddComment productId={productId} /> : null}
                 {comments.length > 0 ? comments.map(x => <Comment key={x._id} comment={x} productId={product._id} />)
                     :
-                    <p>Няма коментари</p>}
+                    <p>No comments</p>}
             </article>
         </section>
     )

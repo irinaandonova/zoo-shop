@@ -52,11 +52,11 @@ const Register = () => {
             <form className="sign-up-form" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
-                        <label htmlFor="first-name">Име:</label>
+                        <label htmlFor="first-name">First name:</label>
                         <input type="text" className="inputFields" name="firstName" />
                     </li>
                     <li>
-                        <label htmlFor="last-name">Фамилия:</label>
+                        <label htmlFor="last-name">Last name:</label>
                         <input type="text" className="inputFields" name="lastName" />
                     </li>
                     <li>
@@ -64,36 +64,36 @@ const Register = () => {
                         <input type="email" className="inputFields" name="email" />
                     </li>
                     <li>
-                        <label htmlFor="username">Потребителско име</label>
+                        <label htmlFor="username">Username</label>
                         <input type="text" className="inputFields" name="username" />
                     </li>
                     <li>
-                        <label htmlFor="town">Град:</label>
+                        <label htmlFor="town">Town:</label>
                         <input type="text" className="inputFields" name="town" />
                     </li>
                     <li>
-                        <label htmlFor="address">Адрес:</label>
+                        <label htmlFor="address">Address:</label>
                         <input type="text" className="inputFields" name="address" />
                     </li>
                     <li>
-                        <label htmlFor="phoneNumber">Телефонен номер:</label>
+                        <label htmlFor="phoneNumber">Phone number:</label>
                         <input type="text" className="inputFields" name="phoneNumber" />
                     </li>
                     <li>
-                        <label htmlFor="password">Парола:</label>
+                        <label htmlFor="password">Password:</label>
                         <input type="password" className="inputFields" name="password" />
                     </li>
                     <li>
-                        <label htmlFor="rePassword">Потвърди парола:</label>
+                        <label htmlFor="rePassword">Repeat password:</label>
                         <input type="password" className="inputFields" name="repeat" />
                     </li>
                     <li id="center-btn">
-                        <button type="submit">Регистрация</button>
+                        <button type="submit">Sign up</button>
                     </li>
                 </ul>
                 <article className="sign-up-link">
-                    <p className="have-profile">Имате профил?</p>
-                    <Link to="/login">Вход</Link>
+                    <p className="have-profile">You already have a profile?</p>
+                    <Link to="/login">Sign in</Link>
                 </article>
             </form>
         </section>

@@ -37,7 +37,7 @@ const Header = () => {
             <nav className="navbar">
                 <ul className="nav-list">
                     <li><Link to="/dog">Dogs</Link></li>
-                    <li><Link to="/cat">Catas</Link></li>
+                    <li><Link to="/cat">Cats</Link></li>
                     <li><Link to="/roden">Rodens</Link></li>
                     <li><Link to="/other">Other</Link></li>
                     {

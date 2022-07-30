@@ -24,20 +24,20 @@ const Dashboard = () => {
     return (
         <section className="home-page" >
             <article className="filter-article">
-                <label htmlFor="filter" className="filter-label">Подраждане по:</label>
+                <label htmlFor="filter" className="filter-label">Sort by:</label>
                 <select id="filter" onChange={(e) => setFilter(e.currentTarget.value)} defaultValue={filter}>
-                    <option value="alphabetical">Име(А-Я)</option>
-                    <option value="alphabetical-reversed">Име(Я-А)</option>
-                    <option value="price-higher">Цена(Низходящо)</option>
-                    <option value="price-lower">Цена(Възходящо)</option>
+                    <option value="alphabetical">Alphabetical(A-Z)</option>
+                    <option value="alphabetical-reversed">Alphabetical(Z-A)</option>
+                    <option value="price-higher">Price(decending)</option>
+                    <option value="price-lower">Price(acending)</option>
                 </select>
             </article>
             <article className="subtype-article">
-                    <p className="subtype-p">Вид продукти: </p>
-                    <button className="subtype profile" onClick={subtypeHandler} value="all">Всички</button>
-                    <button className="subtype profile" onClick={subtypeHandler} value="dry">Суха храна</button>
-                    <button className="subtype profile" onClick={subtypeHandler} value="canned">Консервирана храна</button>
-                    <button className="subtype profile" onClick={subtypeHandler} value="accessory">Аксесоари</button>
+                    <p className="subtype-p">Type product: </p>
+                    <button className="subtype profile" onClick={subtypeHandler} value="all">All</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="dry">Dry food</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="canned">Canned food</button>
+                    <button className="subtype profile" onClick={subtypeHandler} value="accessory">Accessory</button>
                 </article>
             <article className="products">
                 <ul className="all-products">

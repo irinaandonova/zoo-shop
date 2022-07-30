@@ -15,7 +15,7 @@ const StarRating = ({ product }) => {
 
     const onVoteHandler = async (e) => {
         if (!userInfo._id) {
-            alert('Тряба да влезете в профила си, за да гласувате');
+            alert('You need to sign up to register');
         }
 
         try {
@@ -51,9 +51,9 @@ const StarRating = ({ product }) => {
                 })}
             </article>
             {rating ?
-                <p className='rating-info'>Рейтинг {rating} от {usersVoted} гласували</p>
+                <p className='rating-info'>Rating {rating} of {usersVoted} votes</p>
                 :
-                <p className='rating-info'>Бъдете първият, който ще гласува за този продукт</p>
+                <p className='rating-info'>Be the first one to vote</p>
             }
         </article>
     )

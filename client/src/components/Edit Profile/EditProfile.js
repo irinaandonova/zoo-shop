@@ -36,27 +36,27 @@ const EditProfile = () => {
             <form className="edit-form" onSubmit={changeUserInfo}>
                 <ul className="form-input">
                 <li>
-                        <label htmlFor="first-name">Име:</label>
+                        <label htmlFor="first-name">First name:</label>
                         <input type="text" className="inputFields" name="firstName" defaultValue={userInfo.firstName}/>
                     </li>
                     <li>
-                        <label htmlFor="last-name">Фамилия:</label>
+                        <label htmlFor="last-name">Last name:</label>
                         <input type="text" className="inputFields" name="lastName" defaultValue={userInfo.lastName}/>
                     </li>
                     <li>
-                        <label htmlFor="town">Град:</label>
+                        <label htmlFor="town">Town:</label>
                         <input type="text" className="inputFields" name="town" defaultValue={userInfo.town} />
                     </li>
                     <li>
-                        <label htmlFor="address">Адрес: </label>
+                        <label htmlFor="address">Address: </label>
                         <input type="text" className="inputFields" name="address" defaultValue={userInfo.address} />
                     </li>
                     <li>
-                        <label htmlFor="phoneNumber">Телефонен номер:</label>
+                        <label htmlFor="phoneNumber">Phone number:</label>
                         <input type="text" className="inputFields" name="phoneNumber" defaultValue={userInfo.phoneNumber} />
                     </li>
                     <li id="center-btn">
-                        <button type="submit" className='profile edit'>Редакция</button>
+                        <button type="submit" className='profile edit'>Edit profile</button>
                     </li>
                 </ul>
             </form>
