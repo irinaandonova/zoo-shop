@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const cartService  = require('../services/cartService.js');
+const orderService = require('../services/orderService.js');
 
 router.post('', async(req, res) => {
-    const { order, userId } = req.body;
+    const { userDetails, paymentMethod, cart } = req.body;
 
     try {
-        let result = await cartService.createOrder({order, userId});
+        let result = await orderService.createOrder({ userDetails, paymentMethod, cart });
         res.json(result);
     }
     catch(err) {
