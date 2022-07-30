@@ -9,23 +9,18 @@ const Cart = () => {
     const navigate = useNavigate();
 
     const { userInfo, isAuthenticated } = useContext(AuthContext);
-
-    const createOrderHandler = async (e) => {
+    
+    const createOrderHandler = (e) => {
         e.preventDefault();
         if (!isAuthenticated) {
             navigate('/auth/login');
-        }
-
-        try {
+        }        
             if(cart.cartItems.length === 0) {
                 alert('Нямате продукти в количката!');
                 return;
             }
+
             navigate('/cart/order-info');           
-        }
-        catch (err) {
-            console.log(err);
-        }
     }
 
     return (
