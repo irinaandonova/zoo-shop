@@ -19,14 +19,15 @@ const OrderInfo = () => {
         const name = formData.get('name');
         const address = formData.get('address');
         const phoneNumber = formData.get('phone-number');
-        const payment = formData.get('payment');
+        const paymentMethod = formData.get('payment');
         const userDetails = {
+            userId: userInfo._id,
             name,
             address,
-            phoneNumber
+            phoneNumber,
         }
-         getOrderInfo(cart, userDetails, payment);
-        if (payment === 'cash') {
+         getOrderInfo(cart, userDetails, paymentMethod);
+        if (paymentMethod === 'cash') {
             let response = await cartService.createOrder(orderInfo);
             if (response.status === 'ok') {
                 const deliveryDate = convertTime(response.createdAt, 2);
