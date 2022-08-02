@@ -3,8 +3,9 @@ import AuthContext from "../../context/AuthContext.js"
 import { useNavigate } from "react-router-dom";
 import cartService from "../../services/cartService.js";
 import { useSelector } from "react-redux";
-import { convertTime } from "../../services/timeService.js";
+import { convertTime } from "../../helpers/timeHelper.js";
 import OrderContext from "../../context/OrderContext.js";
+import { sendEmail } from "../../helpers/emailHelpers.js";
 
 const OrderInfo = () => {
     const { userInfo } = useContext(AuthContext);
@@ -33,7 +34,7 @@ const OrderInfo = () => {
                 const deliveryDate = convertTime(response.createdAt, 2);
                 const template_params = { to_name: userInfo.firstName, orderId: response.cart._id, deliveryDate, to_email: userInfo.email }
                 
-                await cartService.sendEmail(template_params);
+                await sendEmail(template_params);
 
                 userInfo.hasOrder = true;
                 navigate('/cart');

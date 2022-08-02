@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 import { deleteComment } from "../../features/commentsSlice.js";
 
 import * as commentService from "../../services/commentService.js";
-import { convertTime } from "../../services/timeService.js";
+import { convertTime } from "../../helpers/timeHelper.js";
 
 const Comment = ({ comment, productId }) => {
     const { userInfo } = useContext(AuthContext);
     const dispatch = useDispatch();
     let createdAt = new Date(comment.createdAt);
-    let timestamp = convertTime(createdAt, 0)
+    let timestamp = convertTime(createdAt, 0);
     const deleteCommentHandler = async () => {
 
         try {
