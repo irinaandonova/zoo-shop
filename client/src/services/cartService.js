@@ -1,5 +1,3 @@
-import emailjs from "@emailjs/browser";
-
 const baseUrl = 'http://localhost:4000/cart';
 
 const createOrder = async ({ cart, userDetails, paymentMethod }) => {
@@ -15,19 +13,9 @@ const createOrder = async ({ cart, userDetails, paymentMethod }) => {
 
     return result;
 }
-const sendEmail = (template_params) => {
-    emailjs.send('service_2v0jqnu', 'template_uhrspdh', template_params, 'KoIx4k6LBbfML5ZXa')
-        .then((result) => {
-            return true;
-        }, (error) => {
-            console.log(error.text);
-            return false;
-        });
 
-}
 const cartService = {
     createOrder,
-    sendEmail
 }
 
 export default cartService;
