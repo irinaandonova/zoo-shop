@@ -1,9 +1,29 @@
+import { useElements, useStripe } from "@stripe/react-stripe-js";
+
+
 const CardPayment = () => {
+    const stripe = useStripe();
+    const elements = useElements();
+    
     const onResetHandler = (e) => {
         e.preventDefault();
         e.target.reset();
     }
-    
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const cardNumber = formData.get('card-payment');
+        const name = formData.get('name');
+        const validThru = formData.get('valid-thru');
+        const CDC = formData.get('CDC');
+        const cardInfo = {
+            cardNumber,
+            name,
+            validThru,
+            CDC
+        }
+        
+    }
     return (
         <article className="card-payment">
             <form className="card-payment-form">
