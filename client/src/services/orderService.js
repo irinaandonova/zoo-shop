@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:4000/cart';
+const baseUrl = 'http://localhost:4000/order';
 
 const createOrder = async ({ cart, userDetails, paymentMethod }) => {
     let response = await fetch(baseUrl, {
