@@ -32,9 +32,9 @@ const checkoutPayment = async ({ cardInfo }) => {
     }
 }
 
-const cartService = {
+const orderService = {
     createOrder,
     checkoutPayment
 }
 
-export default cartService;
+export default orderService;
