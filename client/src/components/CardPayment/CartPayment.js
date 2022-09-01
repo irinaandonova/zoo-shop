@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
+import orderService from "../../services/orderService";
+
 const CardPayment = () => {
+    const navigate = useNavigate();
+
     const onResetHandler = (e) => {
         e.preventDefault();
         e.target.reset();
     }
-    const onSubmitCardPayment = (e) => {
+    const onSubmitCardPayment = async(e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const cardNumber = formData.get('cardNumber');
@@ -17,7 +22,16 @@ const CardPayment = () => {
             validThru,
             CVC
         }
-        
+        try {
+            const response = await orderService.checkoutPayment({ cardInfo });
+            if(response.status === 'ok') {
+                navigate('/');
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+
     }
     return (
         <article className="card-payment">
