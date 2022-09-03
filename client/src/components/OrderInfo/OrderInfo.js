@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import AuthContext from "../../context/AuthContext.js"
 import { useNavigate } from "react-router-dom";
-import cartService from "../../services/cartService.js";
+import orderService from "../../services/orderService.js";
 import { useSelector } from "react-redux";
 import { convertTime } from "../../helpers/timeHelper.js";
 import OrderContext from "../../context/OrderContext.js";
-import { sendEmail } from "../../helpers/emailHelpers.js";
+import sendEmail  from "../../helpers/emailHelper";
 
 const OrderInfo = () => {
     const { userInfo } = useContext(AuthContext);
@@ -29,7 +29,7 @@ const OrderInfo = () => {
         }
          getOrderInfo(cart, userDetails, paymentMethod);
         if (paymentMethod === 'cash') {
-            let response = await cartService.createOrder(orderInfo);
+            let response = await orderService.createOrder(orderInfo);
             if (response.status === 'ok') {
                 const deliveryDate = convertTime(response.createdAt, 2);
                 const template_params = { to_name: userInfo.firstName, orderId: response.cart._id, deliveryDate, to_email: userInfo.email }

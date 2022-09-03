@@ -16,23 +16,22 @@ function App() {
     <div className="App">
       <AuthContextProvider>
         <Header />
-        <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/auth/login' element={<Login />} />
-          <Route path='/auth/register' element={<Register />} />
-          <Route path='/cat' element={<Dashboard />} />
-          <Route path='/dog' element={<Dashboard />} />
-          <Route path='/roden' element={<Dashboard />} />
-          <Route path='/other' element={<Dashboard />} />
-          <Route path='/profile' element={<MyProfile />} />
-          <Route path="/profile/:_id/edit" element={<EditProfile />} />
-          <Route path='/details/:productId' element={<Details />} />
-          <OrderContextProvider>
+        <OrderContextProvider>
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/auth/login' element={<Login />} />
+            <Route path='/auth/register' element={<Register />} />
+            <Route path='/cat' element={<Dashboard />} />
+            <Route path='/dog' element={<Dashboard />} />
+            <Route path='/roden' element={<Dashboard />} />
+            <Route path='/other' element={<Dashboard />} />
+            <Route path='/profile' element={<MyProfile />} />
+            <Route path="/profile/:_id/edit" element={<EditProfile />} />
+            <Route path='/details/:productId' element={<Details />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/cart/order-info' element={OrderInfo} />
-          </OrderContextProvider>
-
-        </Routes>
+          </Routes>
+        </OrderContextProvider>
       </AuthContextProvider>
     </div>
   );

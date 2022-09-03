@@ -8,13 +8,13 @@ const CardPayment = () => {
         e.preventDefault();
         e.target.reset();
     }
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async(e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const cardNumber = formData.get('card-payment');
         const name = formData.get('name');
         const validThru = formData.get('valid-thru');
-        const CDC = formData.get('CDC');
+        const CVC = formData.get('CVC');
         const cardInfo = {
             cardNumber,
             name,
@@ -33,7 +33,7 @@ const CardPayment = () => {
     }
     return (
         <article className="card-payment">
-            <form className="card-payment-form" onSubmit={onSubmitCardPayment}>
+            <form className="card-payment-form" onSubmit={onSubmitHandler}>
                 <label htmlFor="card-number">Номер на картата:</label>
                 <input name="cardNumber" className="payment-fiels" />
                 <label htmlFor="name">Имена:</label>

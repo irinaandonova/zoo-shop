@@ -1,48 +1,50 @@
 const baseUrl = 'http://localhost:4000/product';
 const sortProducts = (filter, products) => {
-    if(filter === 'price-higher') {
-        return products.sort((a,b) => Number(b.price) - Number(a.price));
+    if (filter === 'price-higher') {
+        return products.sort((a, b) => Number(b.price) - Number(a.price));
     }
-    else if(filter === 'price-lower') {
-        return products.sort((a,b) => Number(a.price) - Number(b.price));
+    else if (filter === 'price-lower') {
+        return products.sort((a, b) => Number(a.price) - Number(b.price));
     }
-    else if(filter === 'alphabetical'){
+    else if (filter === 'alphabetical') {
         return products.sort((a, b) => a.productName.localeCompare(b.productName));
-    }  
-    else if(filter === 'alphabetical-reversed') {
+    }
+    else if (filter === 'alphabetical-reversed') {
         return products.sort((a, b) => b.productName.localeCompare(a.productName));
     }
 }
 exports.getProducts = async (animal, filter, subtype) => {
-    if(!animal) {
+    if (!animal) {
         animal = 'all';
     }
-        try {
-            let response = await fetch(`${baseUrl}/${animal}/${subtype}`);
-            let result = await response.json();
-            let products = result.products;
-            return sortProducts(filter, products);
-        }
-        catch (err) {
-            console.log(err);
-        }
+    try {
+        let response = await fetch(`${baseUrl}/${animal}/${subtype}`);
+
+        let result = await response.json();
+        console.log(result);
+        let products = result.products;
+        return sortProducts(filter, products);
     }
-    
+    catch (err) {
+        console.log(err);
+    }
+}
 
 
-exports.getProduct = async(id) => {
+
+exports.getProduct = async (id) => {
 
     try {
         let response = await fetch(`${baseUrl}/details/${id}`);
         let result = await response.json();
-        return  JSON.parse(result);
+        return JSON.parse(result);
     }
-    catch(err) {
+    catch (err) {
         throw new Error(err);
     }
 }
 
-exports.rateProduct = async({ _id, rating, userId }) => {
+exports.rateProduct = async ({ _id, rating, userId }) => {
     try {
         let response = await fetch(`${baseUrl}/${_id}/rate`, {
             headers: {
@@ -55,7 +57,7 @@ exports.rateProduct = async({ _id, rating, userId }) => {
         let result = await response.json();
         return result;
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
         return { status: 'err' };
     }

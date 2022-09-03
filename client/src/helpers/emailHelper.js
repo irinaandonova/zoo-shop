@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 
-exports.sendEmail = (template_params) => {
+const sendEmail = (template_params) => {
     emailjs.send('service_2v0jqnu', 'template_uhrspdh', template_params, 'KoIx4k6LBbfML5ZXa')
         .then((result) => {
             return true;
@@ -8,5 +8,6 @@ exports.sendEmail = (template_params) => {
             console.log(error.text);
             return false;
         });
-
 }
+
+export default sendEmail;
