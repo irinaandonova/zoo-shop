@@ -5,7 +5,7 @@ const SALT = 15;
 
 const register = async ({ email, firstName, lastName, username, phoneNumber, town, address, password, rePassword }) => {
     let hashedPass = await authMiddleware.hashPassword(password, SALT);
-    
+
     try {
         const user = new User({ email, firstName, lastName, phoneNumber, town, username, address, password: hashedPass, rePassword });
         console.log(user);
@@ -41,7 +41,7 @@ const login = async ({ username, password }) => {
 const editProfile = async ({ _id, user }) => {
     try {
         const userInfo = await User.updateOne({ _id }, { town: user.town, address: user.address, phoneNumber: user.phoneNumber });
-        return { status: 'ok' }
+        return { status: 'ok', user: userInfo }
     }
     catch (err) {
         console.log(err);

@@ -13,10 +13,10 @@ router.post('', async (req, res) => {
     return { status: 'err', err }
   }
 });
-// This example sets up an endpoint using the Express framework.
-// Watch this video to get started: https://youtu.be/rPR2aJ6XnAc.
+
 router.post('/create-checkout-session', async (req, res) => {
   const { items, totalPrice } = req.body;
+  
   try {
     const response = await orderService.createCheckoutSession(items, totalPrice);
     res.json(response);

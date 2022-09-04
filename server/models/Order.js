@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        town:{
+        town: {
             type: String,
             required: true
         },
@@ -24,36 +24,37 @@ const orderSchema = new mongoose.Schema({
             required: true
         }
     },
-        cartItems: [
-            {
-                _id: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'Product',
-                    required: true
-                },
-                productName: {
-                    type: String,
-                    required: true
-                },
-                price: {
-                    type: Number,
-                    required: true
-                },
-                quantity: {
-                    type: Number, default: 1
-                },
+    cartItems: [
+        {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
             },
-        ],
-        totalPrice: {
-            type: Number,
-            required: true,
-            default: 0
+            productName: {
+                type: String,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            },
+            quantity: {
+                type: Number, default: 1
+            },
         },
-        payment: {
-            type: String,
-            required: true
-        }
-    }, { timestamps: true });
+    ],
+    totalPrice: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    payment: {
+        type: String,
+        required: true
+    }
+}, { timestamps: true });
 
 const order = mongoose.model('order', orderSchema);
+
 module.exports = order;

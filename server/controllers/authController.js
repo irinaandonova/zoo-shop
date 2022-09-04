@@ -12,8 +12,15 @@ router.post('/register', async (req, res) => {
     const password = req.body.password;
     const rePassword = req.body.rePassword;
 
-    const user = await authService.register({ email, firstName, lastName, username, phoneNumber, town, address, password, rePassword });
-    res.json(user);
+    try {
+        const user = await authService.register({ email, firstName, lastName, username, phoneNumber, town, address, password, rePassword });
+        res.json(user);
+    }
+    catch (err) {
+        console.log(err);
+        return { status: 'error' };
+    }
+
 })
 router.post('/login', async (req, res) => {
     const username = req.body.username;
@@ -31,6 +38,7 @@ router.post('/login', async (req, res) => {
 router.post('/:_id', async (req, res) => {
     const _id = req.params._id;
     const user = req.body;
+
     try {
         const result = await authService.editProfile({ _id, user });
 

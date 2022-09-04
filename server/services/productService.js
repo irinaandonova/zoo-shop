@@ -1,10 +1,11 @@
 const Product = require("../models/Product.js")
 
 const subtypeFilter = (products, subtype) => {
-    if(subtype === 'all') {
+    if (subtype === 'all') {
         return products;
     }
     let result = products.filter(x => x.subtype === subtype);
+
     return result;
 
 }
@@ -22,11 +23,11 @@ const getOne = async (id) => {
 const getByType = async (animal, subtype) => {
     try {
         let products = await Product.find({}).lean();
-        if(animal !== 'all') {
-        products = products.filter(x => x.animal === animal);
+        if (animal !== 'all') {
+            products = products.filter(x => x.animal === animal);
         }
         let result = subtypeFilter(products, subtype);
-        console.log(products);
+
         return result;
     }
     catch (err) {
@@ -46,8 +47,9 @@ const rateProduct = async ({ _id, rating, userId }) => {
         else {
             product.rating.push({ userId, rating });
         }
-
+        
         await product.save();
+
         return { status: 'ok' };
     }
     catch (err) {

@@ -3,6 +3,7 @@ const productService = require('../services/productService.js');
 
 router.get('/details/:_id', async (req, res) => {
     const id = req.params._id;
+
     try {
         let product = await productService.getOne(id);
 
@@ -13,13 +14,12 @@ router.get('/details/:_id', async (req, res) => {
         console.log(err);
         return res.json({ status: 'err' });
     }
-
 });
 
 router.get('/:animal/:subtype', async (req, res) => {
     const animal = req.params.animal;
     const subtype = req.params.subtype;
-    console.log(subtype);
+
     const animals = ['all', 'dog', 'cat', 'roden', 'other'];
 
     if (!animals.includes(animal)) {

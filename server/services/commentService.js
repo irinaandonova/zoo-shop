@@ -8,7 +8,7 @@ const addComment = async ({ productId, userId, username, text }) => {
         if (product) {
             let newComment = await new Comment({ username, text, userId });
             await newComment.save();
-            
+
             product.comments.push(newComment);
             await product.save();
 
