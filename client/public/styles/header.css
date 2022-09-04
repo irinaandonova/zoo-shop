@@ -3,6 +3,7 @@
 .navbar {
     display: flex;
 }
+
 .nav-list {
     display: flex;
     padding: 20px 50px;
@@ -11,10 +12,12 @@
     background-color: #44a406;
     margin: 0;
 }
-.nav-list li{
+
+.nav-list li {
     text-decoration: none;
-    list-style: none;    
+    list-style: none;
 }
+
 .logo {
     padding: 0;
     width: 25%;
@@ -23,12 +26,14 @@
     font-size: 40px;
     color: rebeccapurple;
 }
+
 .upper-header {
     display: flex;
     justify-content: space-between;
     margin: 10px 15px 0 10px;
-    
+
 }
+
 .profile {
     font-size: 15px;
     background-color: #9267be;
@@ -37,18 +42,22 @@
     padding-top: 9px;
     border: 1px solid black;
 }
+
 .logout {
     padding: 12px 10px 29px 13px;
 }
+
 .guest-header-article {
     display: flex;
     justify-content: space-between;
 }
+
 .user-header-article {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .greeting {
     font-size: 15px;
     font-family: cursive;

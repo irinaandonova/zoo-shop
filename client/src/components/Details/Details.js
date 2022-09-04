@@ -68,7 +68,7 @@ const Details = () => {
         <section className="product-details">
             <h1>{product.productName}</h1>
             <article className="product-info">
-                <img className="img" src={window.location.origin + "/" + product.imageUrl} alt="product" />
+                <img className="detail-img" src={window.location.origin + "/" + product.imageUrl} alt="product" />
                 <div className="details">
                     <p>{product.description}</p>
                     <p>PriceL: {product.price}lv</p>

@@ -1,6 +1,7 @@
 .product-info {
     display: flex;
 }
+
 .product-details {
     border: 2px solid black;
     margin: 20px 70px;
@@ -8,33 +9,51 @@
     align-self: center;
     background-color: white;
 }
+
 #buy-btn {
     margin-right: 2px;
 }
+
 .invisible {
     display: none;
 }
+
 .star-label {
     border: 0px;
     padding: 0;
     width: 40px;
 }
+
 .stars-article {
     display: flex;
     margin-top: 20px;
     justify-content: center;
 }
+
 .star-btn {
     display: none;
     color: white;
 }
+
 .white {
     color: white;
 }
+
 .rating-info {
     font-size: 12px;
     margin-top: 5px;
 }
+
 .add-comment {
     height: 70px;
+}
+
+.detail-img {
+    max-width: 280px;
+    max-height: 280px;
+}
+
+.details {
+    height: 10%;
+    margin-left: 155px;
 }

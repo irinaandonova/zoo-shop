@@ -2,33 +2,44 @@
     display: block;
     min-height: 750px;
 }
+
 .products {
     height: 200px;
 }
+
 .filter-article {
     background: white;
     border-bottom: 2px solid;
-    width: 29%;
+    width: 23%;
     display: flex;
 }
+
 .filter-label {
     border: 0;
 }
+
 #filter {
     border-left: 2px solid black;
     border-top: 1px solid black;
 }
+
 .subtype {
     padding: 6px 12px;
     border-radius: 15px;
 }
+
 .subtype-p {
     padding: 0px;
     background: white;
     border: 1px solid white;
     margin-right: 5px;
 }
+
 .subtype-article {
     display: flex;
     align-items: center;
+}
+
+.details-btn {
+    height: 10%;
 }
