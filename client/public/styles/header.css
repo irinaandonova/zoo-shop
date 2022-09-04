@@ -19,12 +19,13 @@
 }
 
 .logo {
-    padding: 0;
-    width: 25%;
+    width: 10%;
+    border-radius: 20px;
     font-family: 'Bebas Neue', cursive;
     align-self: center;
     font-size: 40px;
     color: rebeccapurple;
+    background-color: white;
 }
 
 .upper-header {
@@ -35,7 +36,7 @@
 }
 
 .profile {
-    font-size: 15px;
+    font-size: 18px;
     background-color: #9267be;
     height: 30px;
     padding: 0px 12px;
@@ -44,7 +45,7 @@
 }
 
 .logout {
-    padding: 12px 10px 29px 13px;
+    padding: 10px 10px 29px 10px;
 }
 
 .guest-header-article {

@@ -11,7 +11,7 @@ form {
     width: 100%;
     border: none;
     padding: 0.4rem;
-
+    margin: 5px;
 }
 
 input,
@@ -20,6 +20,10 @@ label {
     position: relative;
     align-items: center;
     border: 1px solid;
+}
+
+label {
+    padding: 0 5px;
     width: 157px;
 }
 

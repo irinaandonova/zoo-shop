@@ -6,15 +6,11 @@
     height: 250px;
 }
 
-label {
-    padding: 0 5px;
-    width: 205px
-}
-
 .profile-form label {
     width: 80%;
 }
 
 .edit {
     padding: 8px;
+    height: 35px;
 }

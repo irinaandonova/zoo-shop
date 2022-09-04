@@ -39,7 +39,7 @@ const Login = () => {
                         <input type="password" className="inputFields" name="password" />
                     </li>
                     <li id="center-btn">
-                        <input type="submit" value="Sign in" />
+                        <input type="submit" className="button" value="Sign in" />
                     </li>
                 </ul>
                 <article className="sign-up-link">

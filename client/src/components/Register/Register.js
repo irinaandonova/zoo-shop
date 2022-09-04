@@ -88,7 +88,7 @@ const Register = () => {
                         <input type="password" className="inputFields" name="repeat" />
                     </li>
                     <li id="center-btn">
-                        <button type="submit">Sign up</button>
+                        <button type="submit" className='button'>Sign up</button>
                     </li>
                 </ul>
                 <article className="sign-up-link">
