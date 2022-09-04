@@ -16,7 +16,7 @@ const Cart = () => {
             navigate('/auth/login');
         }        
             if(cart.cartItems.length === 0) {
-                alert('Нямате продукти в количката!');
+                alert('No products in cart!');
                 return;
             }
 

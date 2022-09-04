@@ -29,7 +29,7 @@ function App() {
             <Route path="/profile/:_id/edit" element={<EditProfile />} />
             <Route path='/details/:productId' element={<Details />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/cart/order-info' element={OrderInfo} />
+            <Route path='/cart/order-info' element={<OrderInfo />} />
           </Routes>
         </OrderContextProvider>
       </AuthContextProvider>

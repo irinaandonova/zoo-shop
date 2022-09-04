@@ -19,7 +19,7 @@ const OrderInfo = () => {
         const formData = new FormData(e.target);
         const name = formData.get('name');
         const address = formData.get('address');
-        const phoneNumber = formData.get('phone-number');
+        const phoneNumber = formData.get('phoneNumber');
         const paymentMethod = formData.get('payment');
         const userDetails = {
             userId: userInfo._id,
@@ -55,7 +55,7 @@ const OrderInfo = () => {
                 <label htmlFor="address">Address</label>
                 <input className="order-info" name="address" type="string" defaultValue={userInfo.address} />
                 <label htmlFor="phone-number">Phone Number:</label>
-                <input className="order-info" name="phone-number" type="string" defaultValue={userInfo.phoneNumber} />
+                <input className="order-info" name="phoneNumber" type="string" defaultValue={userInfo.phoneNumber} />
                 <label htmlFor="payment-method">Payment method:</label>
                 <select className="payment-method" name="payment">
                     <option value="cash">Cash</option>
