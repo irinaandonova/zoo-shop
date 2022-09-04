@@ -23,6 +23,10 @@ const productSchema = new mongoose.Schema({
         }
     ]
     ,
+    type: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
 
