@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    userDetails: {
+    user: {
         userId: {
             type: mongoose.Types.ObjectId,
             ref: 'User',

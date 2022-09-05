@@ -20,7 +20,7 @@ const OrderInfo = () => {
         const phoneNumber = formData.get('phoneNumber');
         const paymentMethod = formData.get('payment');
 
-        const userDetails = {
+        const user = {
             userId: userInfo._id,
             firstName: userInfo.firstName,
             lastName: userInfo.lastName,
@@ -35,7 +35,7 @@ const OrderInfo = () => {
 
         if (paymentMethod === 'cash') {
             console.log('here');
-            let response = await orderService.createOrder({ cart, userDetails, paymentMethod: 'cash' });
+            let response = await orderService.createOrder({ cart, user, paymentMethod: 'cash' });
 
             if (response.status === 'ok') {
                 const deliveryDate = convertTime(response.createdAt, 2);
@@ -51,7 +51,7 @@ const OrderInfo = () => {
             }
         }
         else {
-            editProfile(userDetails);
+            editProfile({ user });
             navigate('/cart/card-payment');
         }
     }
