@@ -7,7 +7,11 @@ const orderSchema = new mongoose.Schema({
             ref: 'User',
             required: true
         },
-        name: {
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
             type: String,
             required: true
         },
@@ -49,7 +53,7 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: 0
     },
-    payment: {
+    paymentMethod: {
         type: String,
         required: true
     }

@@ -4,36 +4,43 @@ import { useNavigate } from "react-router-dom";
 import orderService from "../../services/orderService.js";
 import { useSelector } from "react-redux";
 import { convertTime } from "../../helpers/timeHelper.js";
-import OrderContext from "../../context/OrderContext.js";
-import sendEmail  from "../../helpers/emailHelper";
+import sendEmail from "../../helpers/emailHelper";
 
 const OrderInfo = () => {
-    const { userInfo } = useContext(AuthContext);
-    const { orderInfo, getOrderInfo } = useContext(OrderContext);
-    
+    const { userInfo, editProfile } = useContext(AuthContext);
+    console.log(userInfo);
     const cart = useSelector((state) => state.cart);
     const navigate = useNavigate();
 
     const onPayHandler = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const name = formData.get('name');
+        const formData = new FormData(e.currentTarget);
+        const town = formData.get('town');
         const address = formData.get('address');
         const phoneNumber = formData.get('phoneNumber');
         const paymentMethod = formData.get('payment');
+
         const userDetails = {
             userId: userInfo._id,
-            name,
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            username: userInfo.username,
+            email: userInfo.email,
+            hasOrder: false,
             address,
             phoneNumber,
+            town
         }
-         getOrderInfo(cart, userDetails, paymentMethod);
+
+
         if (paymentMethod === 'cash') {
-            let response = await orderService.createOrder(orderInfo);
+            console.log('here');
+            let response = await orderService.createOrder({ cart, userDetails, paymentMethod: 'cash' });
+
             if (response.status === 'ok') {
                 const deliveryDate = convertTime(response.createdAt, 2);
                 const template_params = { to_name: userInfo.firstName, orderId: response.cart._id, deliveryDate, to_email: userInfo.email }
-                
+
                 await sendEmail(template_params);
 
                 userInfo.hasOrder = true;
@@ -44,14 +51,15 @@ const OrderInfo = () => {
             }
         }
         else {
+            editProfile(userDetails);
             navigate('/cart/card-payment');
         }
     }
     return (
         <article className="order-info-article">
-            <form className="order-info-form">
-                <label htmlFor="name">Name:</label>
-                <input className="order-info" name="name" type="string" defaultValue={userInfo.firstName + userInfo.lastName} />
+            <form className="order-info-form" onSubmit={onPayHandler}>
+                <label htmlFor="town">Town:</label>
+                <input className="order-info" name="town" type="string" defaultValue={userInfo.town} />
                 <label htmlFor="address">Address</label>
                 <input className="order-info" name="address" type="string" defaultValue={userInfo.address} />
                 <label htmlFor="phone-number">Phone Number:</label>
@@ -61,7 +69,7 @@ const OrderInfo = () => {
                     <option value="cash">Cash</option>
                     <option value="card">Card</option>
                 </select>
-                <button className="btn" onClick={onPayHandler}>Pay</button>
+                <button className="btn" type="submit">Pay</button>
             </form>
         </article>
     )
