@@ -1,14 +1,20 @@
-
+import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 import orderService from "../../services/orderService";
 
 const CardPayment = () => {
     const navigate = useNavigate();
+    const cart = useSelector((state) => state.cart);
+    const { userInfo } = useContext(AuthContext);
+
     const onResetHandler = (e) => {
         e.preventDefault();
         e.target.reset();
     }
-    const onSubmitHandler = async(e) => {
+
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const cardNumber = formData.get('card-payment');
@@ -22,12 +28,12 @@ const CardPayment = () => {
             CVC
         }
         try {
-            const response = await orderService.checkoutPayment({ cardInfo });
-            if(response.status === 'ok') {
-                navigate('/');
+            const response = await orderService.createOrder({ user: userInfo, cart, paymentMethod: 'card', cardInfo });
+            if (response.status === 'ok') {
+                navigate('/cart');
             }
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
