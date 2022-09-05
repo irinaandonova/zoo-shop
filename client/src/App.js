@@ -11,6 +11,7 @@ import Details from './components/Details/Details.js';
 import Cart from './components/Cart/Cart.js';
 import OrderInfo from './components/OrderInfo/OrderInfo.js';
 import { OrderContextProvider } from './context/OrderContext.js';
+import CardPayment from './components/CardPayment/CardPayment';
 function App() {
   return (
     <div className="App">
@@ -30,6 +31,7 @@ function App() {
             <Route path='/details/:productId' element={<Details />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/cart/order-info' element={<OrderInfo />} />
+            <Route path='/cart/card-payment' element={<CardPayment />} />
           </Routes>
         </OrderContextProvider>
       </AuthContextProvider>
