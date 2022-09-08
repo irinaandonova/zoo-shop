@@ -14,11 +14,13 @@ import AuthContext from '../../context/AuthContext.js';
 import { getComments } from '../../features/commentsSlice.js';
 import StarRating from '../StarRating/StarRating.js';
 import { getRating } from '../../features/ratingSlice.js';
+import ModalMessage from '../Common/Modal/Modal.js';
 
 const Details = () => {
     const [product, setProduct] = useState({})
     const [quantity, setQuantity] = useState(1);
-
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
     const navigate = useNavigate();
 
     const { productId } = useParams();
@@ -49,10 +51,14 @@ const Details = () => {
             .catch(err => console.log(err))
     }, [productId, dispatch]);
 
+    const handleModal = (message) => {
+        setModalMessage(message);
+        setShowModal(true);
+    }
     const addToCartHandler = () => {
         if (userInfo._id) {
             if (userInfo.hasOrder === true) {
-                alert('Вече имате направена поръчка, която се обработва!');
+                handleModal('You already have an order that is being processed!');
                 return;
             }
 
@@ -60,12 +66,13 @@ const Details = () => {
             alert('Успешно закупуване!');
         }
         else {
-            navigate('/auth/login')
+            handleModal('You need to sign in to make a purchase!')
         }
     }
 
     return (
         <section className="product-details">
+            <ModalMessage show={showModal} handleClose={() => setShowModal(false)} message={modalMessage} secondaryBtn={{ message: 'Sign in', btnFunction: () => navigate('/auth/login') }} />
             <h1>{product.productName}</h1>
             <article className="product-info">
                 <img className="detail-img" src={window.location.origin + "/" + product.imageUrl} alt="product" />
@@ -80,7 +87,7 @@ const Details = () => {
                         </article>
                         <button className="button" id='buy-btn' onClick={addToCartHandler}>Купи</button>
                     </article>
-                    <StarRating product={product} />
+                    <StarRating product={product} handleModal={handleModal} />
                 </div>
             </article>
             <article className="comments-wrapper">
