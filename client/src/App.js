@@ -13,7 +13,6 @@ import OrderInfo from './components/OrderInfo/OrderInfo.js';
 import StripeContainer from './components/CardPayment/StripeContainer';
 
 function App() {
-
   return (
     <div className="App">
       <AuthContextProvider>
