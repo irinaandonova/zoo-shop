@@ -1,4 +1,4 @@
-exports.convertTime = (createdAt, additionalTime) => {
+const convertTime = (createdAt, additionalTime) => {
     let timestamp = new Date(createdAt);
             timestamp.setDate(timestamp.getDate() + additionalTime);
 
@@ -8,3 +8,5 @@ exports.convertTime = (createdAt, additionalTime) => {
                 day: '2-digit',
             });
 }
+
+export default convertTime;

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteComment } from "../../features/commentsSlice.js";
 
 import * as commentService from "../../services/commentService.js";
-import { convertTime } from "../../helpers/timeHelper.js";
+import convertTime from "../../helpers/timeHelper.js";
 
 const Comment = ({ comment, productId }) => {
     const { userInfo } = useContext(AuthContext);
@@ -17,8 +17,8 @@ const Comment = ({ comment, productId }) => {
         try {
             let commentId = comment._id;
             let response = await commentService.deleteComment(commentId, productId);
-            
-            if(response.status === 'ok') {
+
+            if (response.status === 'ok') {
                 dispatch(deleteComment(commentId));
                 return;
             }
@@ -33,8 +33,8 @@ const Comment = ({ comment, productId }) => {
     return (
         <article className="comment-section">
             <article className="comment-info">
-            <p className="username">Username: {comment.username}</p>
-            <p className="comment-timestamp">{timestamp}</p>
+                <p className="username">Username: {comment.username}</p>
+                <p className="comment-timestamp">{timestamp}</p>
             </article>
             <p className="comment-text">{comment.text}</p>
             {userInfo._id === comment.userId ?

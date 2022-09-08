@@ -3,7 +3,7 @@ import AuthContext from "../../context/AuthContext.js"
 import { useNavigate } from "react-router-dom";
 import orderService from "../../services/orderService.js";
 import { useSelector } from "react-redux";
-import { convertTime } from "../../helpers/timeHelper.js";
+import convertTime from "../../helpers/timeHelper.js";
 import sendEmail from "../../helpers/emailHelper";
 
 const OrderInfo = () => {
@@ -34,7 +34,6 @@ const OrderInfo = () => {
 
 
         if (paymentMethod === 'cash') {
-            console.log('here');
             let response = await orderService.createOrder({ cart, user, paymentMethod: 'cash' });
 
             if (response.status === 'ok') {
