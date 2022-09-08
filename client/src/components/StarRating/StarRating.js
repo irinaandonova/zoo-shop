@@ -4,8 +4,9 @@ import { useContext } from 'react';
 import * as productService from '../../services/productService.js';
 import AuthContext from '../../context/AuthContext.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRating } from '../../features/ratingSlice.js'
-const StarRating = ({ product }) => {
+import { addRating } from '../../features/ratingSlice.js';
+
+const StarRating = ({ product, handleModal }) => {
     const rating = useSelector(state => state.rating.finalRating);
     const usersVoted = useSelector(state => state.rating.rating).length;
 
@@ -15,14 +16,12 @@ const StarRating = ({ product }) => {
 
     const onVoteHandler = async (e) => {
         if (!userInfo._id) {
-            alert('You need to sign up to register');
+            handleModal('You need to sign in to rate a product!')
         }
-
+        
         try {
             let response = await productService.rateProduct({ _id: product._id, userId: userInfo._id, rating: e.target.value });
-            console.log(response);
             if (response.status === 'ok') {
-                console.log('h');
                 dispatch(addRating({ rating: e.target.value, userId: userInfo._id }));
             }
         }
