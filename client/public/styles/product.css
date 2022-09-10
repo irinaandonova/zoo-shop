@@ -19,6 +19,10 @@
     justify-content: center;
 }
 
+.product:hover {
+    cursor: pointer;
+}
+
 .product-name {
     margin: 5px;
     font-size: 12px;
