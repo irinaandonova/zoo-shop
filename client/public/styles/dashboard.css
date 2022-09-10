@@ -5,34 +5,38 @@
 
 .products {
     height: 200px;
+    width: 83%;
+    margin-left: 100px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .filter-article {
-    background: white;
-    border-bottom: 2px solid;
     width: 19%;
     display: flex;
 }
 
 .filter-label {
     border: 0;
+    display: block;
+    background: #d2d5e3;
+    padding-right: 6px;
 }
 
 #filter {
-    border-left: 2px solid black;
-    border-top: 1px solid black;
+    border-radius: 8px;
 }
 
 .subtype {
-    padding: 6px 12px;
+    padding: 2px 6px;
     border-radius: 15px;
+    margin-left: 3px;
 }
 
 .subtype-p {
     padding: 0px;
-    background: white;
-    border: 1px solid white;
-    margin-right: 5px;
+    background: #d2d5e3;
+    margin-right: 10px;
 }
 
 .subtype-article {
@@ -40,6 +44,16 @@
     align-items: center;
 }
 
+.subtype-article,
+.filter-article {
+    padding: 10px;
+}
+
 .details-btn {
-    height: 10%;
+    text-decoration: none;
+    color: black;
+}
+
+.details-btn:hover {
+    color: rgb(95, 9, 9);
 }
