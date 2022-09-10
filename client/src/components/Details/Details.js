@@ -78,7 +78,7 @@ const Details = () => {
                 <img className="detail-img" src={window.location.origin + "/" + product.imageUrl} alt="product" />
                 <div className="details">
                     <p>{product.description}</p>
-                    <p>PriceL: {product.price}lv</p>
+                    
                     <article className="buy-article">
                         <article className="quantity-wrapper">
                             <button onClick={() => quantityHander('decrease')}>{minus}</button>
@@ -87,6 +87,7 @@ const Details = () => {
                         </article>
                         <button className="button" id='buy-btn' onClick={addToCartHandler}>Купи</button>
                     </article>
+                    <p>{product.price}lv</p>
                     <StarRating product={product} handleModal={handleModal} />
                 </div>
             </article>

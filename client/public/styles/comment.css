@@ -35,3 +35,7 @@
 .comment-timestamp {
     margin: 0;
 }
+
+.comment-text {
+    margin-left: 10px;
+}

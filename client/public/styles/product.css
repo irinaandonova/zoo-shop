@@ -21,6 +21,7 @@
 
 .product:hover {
     cursor: pointer;
+    border: 2px solid;
 }
 
 .product-name {

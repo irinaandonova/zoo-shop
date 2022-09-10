@@ -34,7 +34,7 @@
 }
 
 .logo:hover {
-    color: rgb(52, 8, 97);
+    color: rgb(2, 103, 123);
     font-size: 45px;
 }
 
@@ -92,5 +92,7 @@
 }
 
 .category-link:hover {
-    color: #224e04;
+    color: #0d2000;
+    font-size: 25px;
+    font-weight: 800;
 }

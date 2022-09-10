@@ -54,12 +54,12 @@ form {
     color: black;
     text-decoration: none;
     font-weight: 300;
-    background: #eceaea;
+    background: #e4e0d4;
     padding: 5px;
     border-radius: 10px;
 }
 
 .auth-link:hover {
-    color: #083cb5d4;
+    color: #2c0e01d4;
     font-weight: 600;
 }
