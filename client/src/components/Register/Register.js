@@ -52,40 +52,40 @@ const Register = () => {
             <form className="sign-up-form" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
-                        <label htmlFor="first-name">First name:</label>
-                        <input type="text" className="inputFields" name="firstName" />
+                        <label htmlFor="first-name" className="auth-label">First name:</label>
+                        <input type="text" className="input-field" name="firstName" />
                     </li>
                     <li>
-                        <label htmlFor="last-name">Last name:</label>
-                        <input type="text" className="inputFields" name="lastName" />
+                        <label htmlFor="last-name" className="auth-label">Last name:</label>
+                        <input type="text" className="input-field" name="lastName" />
                     </li>
                     <li>
-                        <label htmlFor="email">E-mail:</label>
-                        <input type="email" className="inputFields" name="email" />
+                        <label htmlFor="email" className="auth-label">E-mail:</label>
+                        <input type="email" className="input-field" name="email" />
                     </li>
                     <li>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="inputFields" name="username" />
+                        <label htmlFor="username" className="auth-label">Username</label>
+                        <input type="text" className="input-field" name="username" />
                     </li>
                     <li>
-                        <label htmlFor="town">Town:</label>
-                        <input type="text" className="inputFields" name="town" />
+                        <label htmlFor="town" className="auth-label">Town:</label>
+                        <input type="text" className="input-field" name="town" />
                     </li>
                     <li>
-                        <label htmlFor="address">Address:</label>
-                        <input type="text" className="inputFields" name="address" />
+                        <label htmlFor="address" className="auth-label">Address:</label>
+                        <input type="text" className="input-field" name="address" />
                     </li>
                     <li>
-                        <label htmlFor="phoneNumber">Phone number:</label>
-                        <input type="text" className="inputFields" name="phoneNumber" />
+                        <label htmlFor="phoneNumber" className="auth-label">Phone number:</label>
+                        <input type="text" className="input-field" name="phoneNumber" />
                     </li>
                     <li>
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" className="inputFields" name="password" />
+                        <label htmlFor="password" className="auth-label">Password:</label>
+                        <input type="password" className="input-field" name="password" />
                     </li>
                     <li>
-                        <label htmlFor="rePassword">Repeat password:</label>
-                        <input type="password" className="inputFields" name="repeat" />
+                        <label htmlFor="rePassword" className="auth-label">Repeat password:</label>
+                        <input type="password" className="input-field" name="repeat" />
                     </li>
                     <li id="center-btn">
                         <button type="submit" className='button'>Sign up</button>
@@ -93,7 +93,7 @@ const Register = () => {
                 </ul>
                 <article className="sign-up-link">
                     <p className="have-profile">You already have a profile?</p>
-                    <Link to="/login">Sign in</Link>
+                    <Link to="/login" className='auth-link'>Sign in</Link>
                 </article>
             </form>
         </section>

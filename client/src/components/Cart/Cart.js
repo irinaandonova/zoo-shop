@@ -29,7 +29,6 @@ const Cart = () => {
             {userInfo.hasOrder ?
                 <section className="card-wrapper processing">
                     <p>Your order is being processed</p>
-
                 </section>
                 :
                 <section className="cart-wrapper" >

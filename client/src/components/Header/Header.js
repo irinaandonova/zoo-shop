@@ -25,7 +25,7 @@ const Header = () => {
                     <article className="user-header-article">
                         <p className="greeting">Hello, {userInfo.firstName}</p>
                         <Link to="/profile" className="profile">My profile</Link>
-                        <input type="button" onClick={logoutHandler} value="Exit profile" className="profile logout" />
+                        <input type="button" onClick={logoutHandler} value="Exit profile" className="profile" />
                     </article>
                     :
                     <article className="guest-header-article">
@@ -36,13 +36,13 @@ const Header = () => {
             </article>
             <nav className="navbar">
                 <ul className="nav-list">
-                    <li><Link to="/dog">Dogs</Link></li>
-                    <li><Link to="/cat">Cats</Link></li>
-                    <li><Link to="/roden">Rodens</Link></li>
-                    <li><Link to="/other">Other</Link></li>
+                    <li><Link to="/dog" className="category-link">Dogs</Link></li>
+                    <li><Link to="/cat" className="category-link">Cats</Link></li>
+                    <li><Link to="/roden" className="category-link">Rodens</Link></li>
+                    <li><Link to="/other" className="category-link">Other</Link></li>
                     {
                         userInfo._id ?
-                            <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
+                            <li><Link to="/cart" className="category-link"><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
                             :
                             null
                     }

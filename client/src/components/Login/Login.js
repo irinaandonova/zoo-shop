@@ -28,15 +28,15 @@ const Login = () => {
     }
     return (
         <section className="auth-form">
-            <form className="loginForm" onSubmit={onSubmitHandler}>
+            <form className="sign-in-form" onSubmit={onSubmitHandler}>
                 <ul className="form-input">
                     <li>
-                        <label htmlFor="email">Username:</label>
-                        <input type="text" className="inputFields" name="username" />
+                        <label htmlFor="email" className="auth-label">Username:</label>
+                        <input type="text" className="input-field" name="username" />
                     </li>
                     <li>
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" className="inputFields" name="password" />
+                        <label htmlFor="password" className="auth-label">Password:</label>
+                        <input type="password" className="input-field" name="password" />
                     </li>
                     <li id="center-btn">
                         <input type="submit" className="button" value="Sign in" />
@@ -44,7 +44,7 @@ const Login = () => {
                 </ul>
                 <article className="sign-up-link">
                     <p className="no-profile">Don't have a profile?</p>
-                    <Link to="/register">Sign up</Link>
+                    <Link to="/register" className="auth-link">Sign up</Link>
                 </article>
             </form>
         </section>
