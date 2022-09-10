@@ -24,7 +24,7 @@ const getByType = async (animal, subtype) => {
     try {
         let products = await Product.find({}).lean();
         if (animal !== 'all') {
-            products = products.filter(x => x.type === animal);
+            products = products.filter(x => x.animal === animal);
         }
         let result = subtypeFilter(products, subtype);
 
