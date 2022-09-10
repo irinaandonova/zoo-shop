@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
         }
     ]
     ,
-    type: {
+    animal: {
         type: String,
         required: true
     },
