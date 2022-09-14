@@ -15,6 +15,7 @@
     text-decoration: none;
     border-top: 2px solid;
     border-bottom: 2px solid;
+    border-color: #c2b9a2;
 }
 
 .nav-list li {
@@ -24,24 +25,24 @@
 }
 
 .logo {
+    margin: 5px;
+    margin-top: 15px;
     width: 10%;
     border-radius: 20px;
     font-family: 'Bebas Neue', cursive;
     align-self: center;
-    font-size: 40px;
     color: #240667;
     text-decoration: none;
 }
 
 .logo:hover {
     color: rgb(2, 103, 123);
-    font-size: 45px;
 }
 
 .upper-header {
     display: flex;
     justify-content: space-between;
-    margin: 10px 15px 0 10px;
+    margin-left: 10px;
 
 }
 
@@ -49,41 +50,42 @@
     font-size: 18px;
     background-color: #e4e0d4;
     height: 30px;
-    padding: 6px 12px;
-    border: 1px solid black;
+    padding: 8px 12px;
     color: black;
     text-decoration: none;
     box-sizing: content-box;
-    border: 1px solid black;
+    border-bottom: 2px solid #c2b9a2;
 }
 
 .profile:hover {
     color: #441275;
 }
 
-.guest-header-article {
-    display: flex;
-    justify-content: space-between;
-}
-
-.user-header-article {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.left-link {
+    border-left: 2px solid #c2b9a2;
+    border-radius: 0 0 0 15px;
 }
 
 .guest-header-article,
 .user-header-article {
-    margin-top: 22px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .greeting {
-    font-size: 15px;
-    font-family: cursive;
-    border: 1px solid black;
+    height: 48px;
+    font-size: 18px;
     padding: 10px;
     margin: 0;
-    background: white;
+    background-color: #e4e0d4;
+    border: 0;
+    border-bottom: 2px solid #c2b9a2;
+}
+
+#exit {
+    border: 0;
+    border-bottom: 2px solid #c2b9a2;
+
 }
 
 .category-link {
@@ -95,4 +97,12 @@
     color: #0d2000;
     font-size: 25px;
     font-weight: 800;
+}
+
+.dog {
+    margin-left: 45px;
+}
+
+.other {
+    margin-right: 45px;
 }

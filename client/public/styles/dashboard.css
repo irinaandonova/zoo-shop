@@ -11,8 +11,6 @@
     padding: 10px;
 }
 
-
-
 .filter-article {
     width: 19%;
     display: flex;
@@ -30,20 +28,23 @@
 }
 
 .subtype {
-    padding: 2px 6px;
+    padding: 2px 32px;
     border-radius: 15px;
-    margin-left: 3px;
+    margin-left: 20px;
+    border: 2px solid;
+    border-color: #c2b9a2;
 }
 
 .subtype-p {
     padding: 0px;
     background: #d2d5e3;
     margin-right: 10px;
+    font-size: 20px;
 }
 
 .subtype-article {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .subtype-article,
