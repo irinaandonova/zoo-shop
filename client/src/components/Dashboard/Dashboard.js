@@ -19,16 +19,15 @@ const Dashboard = () => {
 
     const subtypeHandler = async (e) => {
         await setSubtype(e.target.value);
-
     }
     return (
         <section className="home-page" >
             <article className="subtype-article">
                 <p className="subtype-p">Type product: </p>
-                <button className="subtype profile" onClick={subtypeHandler} value="all">All</button>
-                <button className="subtype profile" onClick={subtypeHandler} value="dry">Dry food</button>
-                <button className="subtype profile" onClick={subtypeHandler} value="canned">Canned food</button>
-                <button className="subtype profile" onClick={subtypeHandler} value="accessory">Accessory</button>
+                <button className={`subtype profile ${subtype === 'all' ? 'selected' : ''}`} onClick={subtypeHandler} value="all">All</button>
+                <button className={`subtype profile ${subtype === 'dry' ? 'selected' : ''}`} onClick={subtypeHandler} value="dry">Dry food</button>
+                <button className={`subtype profile ${subtype === 'canned' ? 'selected' : ''}`} onClick={subtypeHandler} value="canned">Canned food</button>
+                <button className={`subtype profile ${subtype === 'accessory' ? 'selected' : ''}`} onClick={subtypeHandler} value="accessory">Accessory</button>
             </article>
             <article className="filter-article">
                 <label htmlFor="filter" className="filter-label">Sort by:</label>
