@@ -35,6 +35,11 @@
     border-color: #c2b9a2;
 }
 
+.subtype:hover {
+    border-color: rgb(101, 101, 105);
+    color: black;
+}
+
 .subtype-p {
     padding: 0px;
     background: #d2d5e3;
@@ -50,6 +55,10 @@
 .subtype-article,
 .filter-article {
     padding: 10px;
+}
+
+.selected {
+    border-color: black;
 }
 
 .details-btn {

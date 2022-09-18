@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&display=swap');
 
-a, .greeting, .profile {
+a,
+.greeting,
+.profile {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
+}
+
+.button {
+    font-size: 14px;
 }
 
 .logo {
@@ -18,4 +25,29 @@ a, .greeting, .profile {
 
 #filter {
     font-size: 17px;
+}
+
+.category-link:hover {
+    font-weight: 800;
+}
+
+.auth-label,
+.input-field {
+    font-size: 15px;
+}
+
+.sign-up-link {
+    font-size: 15px;
+}
+
+.auth-link {
+    font-weight: 300;
+}
+
+.auth-link:hover {
+    font-weight: 600;
+}
+
+.product-name {
+    font-size: 12px;
 }

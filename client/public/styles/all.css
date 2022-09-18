@@ -1,14 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&display=swap');
-
 body {
     padding: 0;
     margin: 0;
     background-image: url('../images/backround.png');
 }
-
-/*section {
-    background-image: url('https://st4.depositphotos.com/15733704/24991/v/450/depositphotos_249911356-stock-illustration-dog-paw-seamless-cat-paw.jpg');
-}*/
 
 .site-wrapper {
     width: 650px;
@@ -21,8 +15,6 @@ body {
 a {
     text-decoration: none;
     color: black;
-    font-family: 'fangsong';
-    font-size: 22px;
 }
 
 li {
@@ -34,7 +26,6 @@ li {
     border-radius: 4px;
     padding: 5px;
     background-color: #e4e0d4;
-    font-size: 14px;
     max-height: 32px;
     margin-bottom: 10px;
 }
@@ -43,3 +34,4 @@ li {
     width: 30%;
     margin-left: 407px;
 }
+
