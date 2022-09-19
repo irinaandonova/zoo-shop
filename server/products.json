@@ -1,0 +1,233 @@
+[{
+  "_id": {
+    "$oid": "6314888b14bf25c70b49ffb0"
+  },
+  "productName": "Purina Hepatic",
+  "price": "28.00",
+  "description": "For cats with liver problems",
+  "subtype": "dry",
+  "rating": [
+    {
+      "userId": {
+        "$oid": "6314ca730cd6c30b3bc20459"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "631a06339c0a276b28055f47"
+      }
+    }
+  ],
+  "comments": [],
+  "imageUrl": "images/cats/food/0.Purina.jpg",
+  "__v": 1,
+  "animal": "cat"
+},{
+  "_id": {
+    "$oid": "631a137d45ee27b2ac86fce3"
+  },
+  "productName": "Leo’s Sterilised with turkey",
+  "price": "1.75",
+  "animal": "cat",
+  "description": "Canned food for neutered cats 415gr",
+  "imageUrl": "images/cats/food/10.jpg",
+  "subtype": "wet",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "631a143245ee27b2ac86fce4"
+  },
+  "productName": "Purina Dog Chow ",
+  "price": "17.5",
+  "animal": "dog",
+  "description": "Dry food for large breed puppies",
+  "imageUrl": "images/dogs/food/0.jpg",
+  "subtype": "dry",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "631a14bd45ee27b2ac86fce5"
+  },
+  "productName": "Nature Cuni Junior ",
+  "price": "17.5",
+  "animal": "roden",
+  "description": "Dry food for junior rabbits",
+  "imageUrl": "images/rodens/food/01.cuni.jpg",
+  "subtype": "dry",
+  "comments": [
+    {
+      "_id": {
+        "$oid": "631cb2d21cdfae4a75547e55"
+      },
+      "userId": {
+        "$oid": "6314ca730cd6c30b3bc20459"
+      },
+      "text": "Amazing!",
+      "username": "irinaA",
+      "createdAt": {
+        "$date": {
+          "$numberLong": "1662825170857"
+        }
+      }
+    }
+  ],
+  "rating": [],
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6325a093b8be1b62d68c5af1"
+  },
+  "productName": "Purina Cat Chow Special Care 3in1 1.5kg",
+  "price": "12.1",
+  "animal": "cat",
+  "description": "Quality food against tooth decay, hairballs and healthy urinary track",
+  "imageUrl": "images/cats/food/1.Purina.jpg",
+  "subtype": "dry",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325a30fb8be1b62d68c5af2"
+  },
+  "productName": "Royal Canin Neutered Satiety Balance 1.5кг",
+  "price": "32.00",
+  "animal": "cat",
+  "description": "Dry food for neutered cats or cats who are prone to obesity",
+  "imageUrl": "images/cats/food/01.Royal.png",
+  "subtype": "dry",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325a74eb8be1b62d68c5af3"
+  },
+  "productName": "Flamingo 48 x 25 x 5",
+  "price": "31.00",
+  "animal": "cat",
+  "description": "Scratching pad with rolling ball",
+  "imageUrl": "images/cats/accessory/6.jpg",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325a7b5b8be1b62d68c5af4"
+  },
+  "productName": "Flamingo TUMBLER 18cm",
+  "price": "3.00",
+  "animal": "cat",
+  "description": "Toy for cats",
+  "imageUrl": "images/cats/accessory/7.jpg",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325a816b8be1b62d68c5af5"
+  },
+  "productName": "Zolux",
+  "price": "50.00",
+  "animal": "cat",
+  "description": "Textile transport bag",
+  "imageUrl": "images/cats/accessory/8.png",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325a8d0b8be1b62d68c5af6"
+  },
+  "productName": "Kippy Pete 400gr",
+  "price": "5.00",
+  "animal": "cat",
+  "description": "Salmon canned food for sterilised cats",
+  "imageUrl": "images/cats/food/9.jpg",
+  "subtype": "canned",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325aa10b8be1b62d68c5af7"
+  },
+  "productName": "Leo's complete cat food 500gr",
+  "price": "7.00",
+  "animal": "cat",
+  "description": "Chunkies with turkey for sterilised cats",
+  "imageUrl": "images/cats/food/10.jpg",
+  "subtype": "canned",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325aa80b8be1b62d68c5af8"
+  },
+  "productName": "Dog chow 1.5kg",
+  "price": "27.00",
+  "animal": "dog",
+  "description": "Dry food for large breed puppies",
+  "imageUrl": "images/dogs/food/0.jpg",
+  "subtype": "canned",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325aad0b8be1b62d68c5af9"
+  },
+  "productName": "Kippy 400gr",
+  "price": "5.00",
+  "animal": "dog",
+  "description": "Chicken canned food",
+  "imageUrl": "images/dogs/food/2.jpg",
+  "subtype": "canned",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325ab86b8be1b62d68c5afa"
+  },
+  "productName": "Dog leash",
+  "price": "5.00",
+  "animal": "dog",
+  "description": "Red dog leash",
+  "imageUrl": "images/dogs/accessory/5.jpg",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325abe7b8be1b62d68c5afb"
+  },
+  "productName": "Dog toy",
+  "price": "10.00",
+  "animal": "dog",
+  "description": "Rope toy",
+  "imageUrl": "images/dogs/accessory/4.jpg",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "6325ac2cb8be1b62d68c5afc"
+  },
+  "productName": "Dog bowl",
+  "price": "13.00",
+  "animal": "dog",
+  "description": "Dog bowl for slower eating",
+  "imageUrl": "images/dogs/accessory/6.jpg",
+  "subtype": "accessory",
+  "comments": [],
+  "rating": []
+},{
+  "_id": {
+    "$oid": "632749b40560b2c6059a6b69"
+  },
+  "productName": "Tetra Rubin",
+  "price": "6.00",
+  "animal": "other",
+  "description": "Universal fish food that touches up color intensity",
+  "imageUrl": "images/roden/fish/01.jpg",
+  "subtype": "dry",
+  "comments": [],
+  "rating": []
+}]
