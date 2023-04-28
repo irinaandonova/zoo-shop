@@ -8,7 +8,7 @@ import sendEmail from "../../helpers/emailHelper";
 
 const OrderInfo = () => {
     const { userInfo, editProfile } = useContext(AuthContext);
-    console.log(userInfo);
+
     const cart = useSelector((state) => state.cart);
     const navigate = useNavigate();
 

@@ -21,7 +21,6 @@ exports.getProducts = async (animal, filter, subtype) => {
         let response = await fetch(`${baseUrl}/${animal}/${subtype}`);
 
         let result = await response.json();
-        console.log(result);
         let products = result.products;
         return sortProducts(filter, products);
     }

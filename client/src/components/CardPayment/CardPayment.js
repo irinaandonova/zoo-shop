@@ -54,7 +54,6 @@ const CardPayment = () => {
                 navigate('/cart');
             }
             else {
-                console.log(response);
                 await stripe.redirectToCheckout({ sessionId: response.sessionId })
             }
         }
