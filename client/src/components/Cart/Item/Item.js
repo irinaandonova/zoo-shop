@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import { increment, decrement} from "../../../features/cartSlice.js";
+import { increment, decrement } from "../../../features/cartSlice.js";
 import { useState } from 'react';
-const Item = ({  item }) => {
+const Item = ({ item }) => {
     const plus = <FontAwesomeIcon icon={faPlus} />;
     const minus = <FontAwesomeIcon icon={faMinus} />;
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Item = ({  item }) => {
             dispatch(decrement({ _id }));
             setQuantity(quantity - 1);
         } else {
-            dispatch(increment({_id}));
+            dispatch(increment({ _id }));
             setQuantity(quantity + 1);
         }
     }
@@ -37,7 +37,7 @@ const Item = ({  item }) => {
             </td>
             <td>{(item.price * quantity).toFixed(2)}</td>
         </tr>
-    )
+    );
 }
 
 export default Item;

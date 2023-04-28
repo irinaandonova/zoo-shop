@@ -20,6 +20,7 @@ const Dashboard = () => {
     const subtypeHandler = async (e) => {
         await setSubtype(e.target.value);
     }
+
     return (
         <section className="home-page" >
             <article className="subtype-article">
@@ -47,7 +48,7 @@ const Dashboard = () => {
                 </ul>
             </article>
         </section >
-    )
+    );
 }
 
 export default Dashboard;

@@ -6,14 +6,13 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({});
-    
-    const login = async ({ username, password }) => {
 
+    const login = async ({ username, password }) => {
         try {
             const response = await authService.login({ username, password });
             if (response.status === 'ok') {
                 const { user } = response;
-                
+
                 setUserInfo(user);
                 return { status: 'ok' }
             }
@@ -44,12 +43,12 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logout = () => {
-        setUserInfo( {} );
+        setUserInfo({});
         return;
     }
 
     const editProfile = async ({ user }) => {
-        const response = await authService.editProfile( { _id: userInfo._id, user } );
+        const response = await authService.editProfile({ _id: userInfo._id, user });
         if (response.status === 'ok') {
             const editUser = {
                 _id: userInfo._id,
@@ -70,10 +69,12 @@ export const AuthContextProvider = ({ children }) => {
             return { status: 'err' };
         }
     }
+
     return (
         <AuthContext.Provider value={{ login, logout, userInfo, register, isAuthenticated: userInfo.email, editProfile }}>
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
+
 export default AuthContext;

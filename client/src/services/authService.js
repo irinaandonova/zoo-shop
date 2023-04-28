@@ -1,7 +1,6 @@
 const baseUrl = 'http://localhost:4000/auth';
 
 const register = async ({ firstName, lastName, email, username, phoneNumber, address, town, password }) => {
-
     try {
         let response = await fetch(`${baseUrl}/register`, {
             headers: {
@@ -20,7 +19,6 @@ const register = async ({ firstName, lastName, email, username, phoneNumber, add
 }
 
 const login = async ({ username, password }) => {
-
     try {
         let response = await fetch(`${baseUrl}/login`, {
             headers: {
@@ -40,7 +38,6 @@ const login = async ({ username, password }) => {
 }
 
 const editProfile = async ({ _id, user }) => {
-    
     try {
         let response = await fetch(`${baseUrl}/${_id}`, {
             headers: {

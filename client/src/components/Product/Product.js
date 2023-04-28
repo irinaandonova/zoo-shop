@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
     const detailsHandler = () => {
         navigate(`/details/${product._id}`);
     }
@@ -14,4 +15,5 @@ const Product = ({ product }) => {
         </li>
     );
 }
+
 export default Product;

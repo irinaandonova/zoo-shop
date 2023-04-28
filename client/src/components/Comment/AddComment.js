@@ -36,7 +36,7 @@ const AddComment = (productId) => {
                 <button className="button comment-btn">Add comment</button>
             </form>
         </section>
-    )
+    );
 }
 
 export default AddComment;

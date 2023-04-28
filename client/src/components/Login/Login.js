@@ -26,6 +26,7 @@ const Login = () => {
             navigate('/auth/register')
         }
     }
+    
     return (
         <section className="auth-form">
             <form className="sign-in-form" onSubmit={onSubmitHandler}>
@@ -48,6 +49,7 @@ const Login = () => {
                 </article>
             </form>
         </section>
-    )
+    );
 }
+
 export default Login;

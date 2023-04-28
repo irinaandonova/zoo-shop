@@ -1,4 +1,5 @@
 const baseUrl = 'http://localhost:4000/product';
+
 const sortProducts = (filter, products) => {
     if (filter === 'price-higher') {
         return products.sort((a, b) => Number(b.price) - Number(a.price));
@@ -13,6 +14,7 @@ const sortProducts = (filter, products) => {
         return products.sort((a, b) => b.productName.localeCompare(a.productName));
     }
 }
+
 exports.getProducts = async (animal, filter, subtype) => {
     if (!animal) {
         animal = 'all';

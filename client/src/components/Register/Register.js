@@ -5,7 +5,7 @@ import AuthContext from '../../context/AuthContext.js';
 const Register = () => {
     const navigate = useNavigate();
     const { register, login } = useContext(AuthContext);
-    
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
 
@@ -42,11 +42,9 @@ const Register = () => {
             else if (response.username) {
                 alert(`Такова потребителско име вече съществува!`)
             }
-            else {
-                console.log(response);
-            }
         }
     }
+
     return (
         <section className="auth-form">
             <form className="sign-up-form" onSubmit={onSubmitHandler}>
@@ -97,6 +95,7 @@ const Register = () => {
                 </article>
             </form>
         </section>
-    )
+    );
 }
+
 export default Register;

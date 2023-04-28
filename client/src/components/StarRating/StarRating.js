@@ -29,6 +29,7 @@ const StarRating = ({ product, handleModal }) => {
             console.log(err);
         }
     }
+
     return (
         <article className='stars-info-article'>
             <article className="stars-article">
@@ -55,7 +56,7 @@ const StarRating = ({ product, handleModal }) => {
                 <p className='rating-info'>Be the first one to vote</p>
             }
         </article>
-    )
+    );
 }
 
 export default StarRating;

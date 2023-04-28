@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import orderService from "../../services/orderService";
-import  convertTime  from "../../helpers/timeHelper";
+import convertTime from "../../helpers/timeHelper";
 import sendEmail from "../../helpers/emailHelper";
 
 const CardPayment = () => {
@@ -12,6 +12,7 @@ const CardPayment = () => {
     const cart = useSelector((state) => state.cart);
     const { userInfo } = useContext(AuthContext);
     const stripe = useStripe();
+
     const onResetHandler = (e) => {
         e.preventDefault();
         e.target.reset();
@@ -37,7 +38,7 @@ const CardPayment = () => {
                     product_data: {
                         name: item.productName,
                     },
-                    unit_amount: item.price * 100                   
+                    unit_amount: item.price * 100
                 },
                 quantity: item.quantity
             }
@@ -78,7 +79,7 @@ const CardPayment = () => {
                 </article>
             </form>
         </article>
-    )
+    );
 }
 
 export default CardPayment;

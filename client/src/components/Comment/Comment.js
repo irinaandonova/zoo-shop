@@ -30,6 +30,7 @@ const Comment = ({ comment, productId }) => {
             console.log(err);
         }
     }
+
     return (
         <article className="comment-section">
             <article className="comment-info">
@@ -40,7 +41,7 @@ const Comment = ({ comment, productId }) => {
             {userInfo._id === comment.userId ?
                 <button className="btn" onClick={deleteCommentHandler}>Delete comment</button> : null}
         </article>
-    )
+    );
 }
 
 export default Comment;

@@ -32,7 +32,6 @@ const OrderInfo = () => {
             town
         }
 
-
         if (paymentMethod === 'cash') {
             let response = await orderService.createOrder({ cart, user, paymentMethod: 'cash' });
 
@@ -54,6 +53,7 @@ const OrderInfo = () => {
             navigate('/cart/card-payment');
         }
     }
+
     return (
         <article className="order-info-article">
             <form className="order-info-form" onSubmit={onPayHandler}>
@@ -71,7 +71,7 @@ const OrderInfo = () => {
                 <button className="btn" type="submit">Pay</button>
             </form>
         </article>
-    )
+    );
 }
 
 export default OrderInfo;

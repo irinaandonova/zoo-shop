@@ -31,6 +31,7 @@ const EditProfile = () => {
             throw new Error('Not able to edit!')
         }
     }
+    
     return (
         <section className="auth-form">
             <form className="edit-form" onSubmit={changeUserInfo}>
@@ -61,6 +62,7 @@ const EditProfile = () => {
                 </ul>
             </form>
         </section>
-    )
+    );
 }
+
 export default EditProfile;

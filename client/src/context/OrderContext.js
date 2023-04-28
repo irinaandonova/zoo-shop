@@ -17,7 +17,7 @@ export const OrderContextProvider = ({ children }) => {
         <OrderContext.Provider value={{ orderInfo, getOrderInfo, clearOrderInfo }}>
             {children}
         </OrderContext.Provider>
-    )
+    );
 }
 
 export default OrderContext;

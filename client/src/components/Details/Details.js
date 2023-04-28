@@ -98,7 +98,7 @@ const Details = () => {
                     <p>No comments</p>}
             </article>
         </section>
-    )
+    );
 }
 
 export default Details;

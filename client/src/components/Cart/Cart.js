@@ -59,9 +59,8 @@ const Cart = () => {
                     }
                 </section>
             }
-
         </section>
-    )
+    );
 }
 
 export default Cart;

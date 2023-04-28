@@ -10,7 +10,7 @@ const StripeContainer = () => {
         <Elements stripe={stripePromise}>
             <CardPayment />
         </Elements>
-    )
+    );
 }
 
 export default StripeContainer;
