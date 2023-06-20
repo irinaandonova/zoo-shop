@@ -21,4 +21,16 @@ export type IProduct = {
     imageUrl: string
 }
 
+export type IUser = {
+    _id: string,
+    username: string,
+    email: string,
+    password: string,
+    address: string,
+    firstName: string,
+    lastName: string,
+    hasOrder: boolean,
+    phoneNumber: string,
+    town: string
+}
 
