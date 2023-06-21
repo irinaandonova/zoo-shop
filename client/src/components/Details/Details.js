@@ -25,7 +25,8 @@ const Details = () => {
 
     const { productId } = useParams();
     const { userInfo } = useContext(AuthContext);
-
+    console.log(userInfo)
+    
     const dispatch = useDispatch();
 
     const comments = useSelector(state => state.comments.comments);

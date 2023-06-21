@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import * as productService from "../../services/productService.js";
-import Product from "../Product/Product.js";
+import Product from "../Product/Product.tsx";
 
 const Dashboard = () => {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState('alphabetical');
     const [subtype, setSubtype] = useState('all');
-
     const location = useLocation();
     const animal = location.pathname.split('/')[1];
 
